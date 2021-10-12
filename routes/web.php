@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@auth')->name('login.auth');
+
+Route::get('/auth', 'ClientController@auth');
+Route::get('/client', 'ClientController@index');
+Route::get('/collection', 'ClientController@getCollection');
