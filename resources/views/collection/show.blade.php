@@ -13,16 +13,14 @@
                     <div class="card-body table-full-width table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Action</th>
+                                <th>title</th>
+                                <th>description</th>
                             </thead>
                             <tbody>
                             @foreach($data as $value)
                                 <tr>
-                                    <td>{{$value->id}}</td>
-                                    <td><a href="{{route('collection.show', ['id' => $value->id])}}">{{$value->title}}</td>
-                                    <td>Editar</td>
+                                    <td>{{$value->title}}</td>
+                                    <td>{{!!$value->description!!}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -30,25 +28,6 @@
                     </div>
                 </div>
             </div>
-
-
-<table border='1'>
-    <tr>
-        <td>
-            @if($from > 0)
-                <a href="http://127.0.0.1:8081/collection?page={{$from}}"><< prev [{{$from}}]</a>
-            @endif
-        </td>
-        <td><li style="display: inline; ">now [{{$now}}]</li></td>
-        <td>
-            @if($to <= $last_page)
-                <a href="http://127.0.0.1:8081/collection?page={{$to}}">next [{{$to}}]>></a>
-            @endif
-        </td>
-    </tr>
-<table>
-
-
 
 
         </div>

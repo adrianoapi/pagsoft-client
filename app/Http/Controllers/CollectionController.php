@@ -43,4 +43,19 @@ class CollectionController extends Controller
 
         return response()->view('collection.index', $structure);
     }
+
+    public function show(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections/collection/'.$request->id);
+        $data = json_decode($response->getBody());
+
+        $structure = [
+            'data' => $data->items,
+            'from' => intval($request->page) - 1,
+            'to' => intval($request->page) + 1,
+            'now' => intval($request->page),
+        ];
+
+        return response()->view('collection.show', $structure);
+    }
 }

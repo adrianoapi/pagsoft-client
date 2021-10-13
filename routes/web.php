@@ -22,7 +22,7 @@ Route::get('/logout', 'LoginController@logout')->name('login.logout');
 Route::post('/login', 'LoginController@auth')->name('login.auth');
 
 # Collection
-Route::get('/collection', 'CollectionController@index');
+Route::get('/collection', 'CollectionController@index')->name('collection.idex');
+Route::get('/collection/{id}', 'CollectionController@show')->name('collection.show');
 
-# CollectionItem
 
