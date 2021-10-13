@@ -21,6 +21,8 @@ Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('login.logout');
 Route::post('/login', 'LoginController@auth')->name('login.auth');
 
-Route::get('/auth', 'ClientController@auth');
-Route::get('/client', 'ClientController@index');
-Route::get('/collection', 'ClientController@getCollection');
+# Collection
+Route::get('/collection', 'CollectionController@index');
+
+# CollectionItem
+

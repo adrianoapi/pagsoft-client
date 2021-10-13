@@ -15,18 +15,14 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Salary</th>
-                                <th>Country</th>
-                                <th>City</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
                             @foreach($data as $value)
                                 <tr>
-                                    <td{{$value->id}}</td>
-                                    <td>{{$value->title}}</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
+                                    <td>{{$value->id}}</td>
+                                    <td><a href="">{{$value->title}}</a></td>
+                                    <td>Editar</td>
                                 </tr>
                             @endforeach
                             </tbody>

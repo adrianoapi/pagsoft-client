@@ -5,36 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class ClientController extends Controller
+class CollectionController extends Controller
 {
     private $access_token;
 
     public function __construct()
     {
-       if(empty(session()->get('access_token')))
+       //
+    }
+
+    public function checkAuth()
+    {
+        if(!session()->get('access_token'))
        {
-           die('Not access_token');
+           die('Not access_token!');
        }
     }
 
-
-    public function index()
-    {
-        echo 'oi index';
-    }
-
-    public function getCollection(Request $request)
+    public function index(Request $request)
     {
         $page = !empty($request->page) ? $request->page : 1;
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections',[
             'page' => $page,
-            #'title' => 'revista',
         ]);
         $data = json_decode($response->getBody());
-
-        /*echo '<pre>';
-        var_dump($data);
-        die();*/
 
         $structure = [
             'data' => $data->data,
@@ -47,6 +41,6 @@ class ClientController extends Controller
             'now' => intval($request->page),
         ];
 
-        return response()->view('client.index', $structure);
+        return response()->view('collection.index', $structure);
     }
 }
