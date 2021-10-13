@@ -16,11 +16,15 @@
     <link href="{!! asset('assets/css/light-bootstrap-dashboard.css?v=2.0.0') !!}" rel="stylesheet">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{!! asset('assets/css/demo.css') !!}" rel="stylesheet">
+
+    <!-- codemirror -->
+    <link href="{!! asset('assets/css/plugins/codemirror/codemirror.css') !!}" rel="stylesheet">
+    <link href="{!! asset('assets/css/plugins/codemirror/monokai.css') !!}" rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="./assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-image="/assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -181,5 +185,13 @@
 <script src="{!! asset('assets/js/light-bootstrap-dashboard.js?v=2.0.0') !!}"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{!! asset('assets/js/demo.js') !!}"></script>
+
+<!-- codemirror -->
+<!-- CodeMirror -->
+<script src="{!! asset('assets/js/plugins/codemirror/codemirror.js') !!}"></script>
+<script src="{!! asset('assets/js/plugins/codemirror/mode/javascript/javascript.js') !!}"></script>
+
+@section('scripts')
+@show
 
 </html>

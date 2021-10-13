@@ -20,7 +20,7 @@
                             @foreach($data as $value)
                                 <tr>
                                     <td>{{$value->title}}</td>
-                                    <td>{{!!$value->description!!}}</td>
+                                    <td>{!!$value->description!!}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -33,4 +33,23 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+<script>
+
+function qsa(sel) {
+    return Array.apply(null, document.querySelectorAll(sel));
+}
+qsa(".code").forEach(function (editorEl) {
+  CodeMirror.fromTextArea(editorEl, {
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+    theme: 'monokai',
+  });
+});
+
+</script>
 @endsection
