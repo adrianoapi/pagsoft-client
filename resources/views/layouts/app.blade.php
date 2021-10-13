@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Pagsoft API</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -32,8 +32,8 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
+                    <a href="http://www.pagsoft.com.br" class="simple-text">
+                        Pagsoft API
                     </a>
                 </div>
                 <ul class="nav">
@@ -51,15 +51,15 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="./table.html">
+                        <a class="nav-link" href="{{route('collection.idex')}}">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Table List</p>
+                            <p>Collections</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./typography.html">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                            <i class="nc-icon nc-money-coins"></i>
+                            <p>Ledgers</p>
                         </a>
                     </li>
                     <li>

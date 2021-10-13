@@ -50,6 +50,7 @@ class CollectionController extends Controller
         $data = json_decode($response->getBody());
 
         $structure = [
+            'collection' => $data->collection,
             'data' => $data->items,
             'from' => intval($request->page) - 1,
             'to' => intval($request->page) + 1,

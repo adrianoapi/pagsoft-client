@@ -13,7 +13,7 @@
                                 [<a href="">New</a>]
                             </small>
                         </h4>
-                        <p class="card-category">{!!$collection->description!!}</p>
+                        <p class="card-category">{{$collection->description}}</p>
                     </div>
                     <div class="card-body">
 
@@ -42,7 +42,7 @@
                                 <h3>
                                     <i class="nc-icon nc-tag-content"></i> {{$value->title}}
                                     <small>
-                                        [<a href="{{route('collItems.edit', ['id' => $value->id])}}">Edit</a>]
+                                        [<a href="">Edit</a>]
                                         [<a href="">Delete</a>]
                                     </small>
                                 </h3>
