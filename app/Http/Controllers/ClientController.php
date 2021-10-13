@@ -9,25 +9,14 @@ class ClientController extends Controller
 {
     private $access_token;
 
-    public function auth()
+    public function __construct()
     {
-        if(empty(session()->get('access_token')))
-        {
-            $response = Http::post('http://127.0.0.1:8000/api/auth/login', [
-                'email' => '',
-                'password' => '',
-            ]);
-
-            if(!empty($response))
-            {
-                $data = json_decode($response);
-                if(array_key_exists('access_token', $data))
-                {
-                    session(['access_token' => $data->access_token]);
-                }
-            }
-        }
+       if(empty(session()->get('access_token')))
+       {
+           die('Not access_token');
+       }
     }
+
 
     public function index()
     {
@@ -37,7 +26,7 @@ class ClientController extends Controller
     public function getCollection(Request $request)
     {
         $page = !empty($request->page) ? $request->page : 1;
-        $response = Http::withToken(session()->get('access_token'))->get('http://127.0.0.1:8000/api/collections',[
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections',[
             'page' => $page,
             #'title' => 'revista',
         ]);

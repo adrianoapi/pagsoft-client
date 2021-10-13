@@ -19,8 +19,8 @@ class LoginController extends Controller
 
     public function auth(Request $request)
     {
-        $response = Http::post('http://127.0.0.1:8000/api/auth/login', [
-            'email' => $request->username,
+        $response = Http::post(getenv('API_URL').'api/auth/login', [
+            'email'    => $request->username,
             'password' => $request->password,
         ]);
 
@@ -31,7 +31,15 @@ class LoginController extends Controller
             if(array_key_exists('access_token', $data))
             {
                 session(['access_token' => $data->access_token]);
+                return redirect()->route('login');
             }
         }
+    }
+
+    public function logout()
+    {
+        session()->forget('access_token');
+        session()->flush();
+        return redirect()->route('login');
     }
 }

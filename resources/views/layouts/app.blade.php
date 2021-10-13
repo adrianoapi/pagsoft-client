@@ -88,6 +88,7 @@
         </div>
         <div class="main-panel">
             <!-- Navbar -->
+            @if(session()->get('access_token'))
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#pablo"> Table List </a>
@@ -145,7 +146,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="{{route('login.logout')}}">
                                     <span class="no-icon">Log out</span>
                                 </a>
                             </li>
@@ -153,6 +154,7 @@
                     </div>
                 </div>
             </nav>
+            @endif
             <!-- End Navbar -->
             @yield('content')
             <footer class="footer">
