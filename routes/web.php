@@ -28,3 +28,5 @@ Route::get('/collection/{id}', 'CollectionController@show')->name('collection.sh
 # CollectionItem
 Route::get ('collection-item/edit/{id}',  'CollectionItemController@edit'  )->name('collectionItem.edit');
 Route::put ('collection-item/{id}',       'CollectionItemController@update')->name('collectionItem.update');
+
+Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')->name('collectionItem.destroy');

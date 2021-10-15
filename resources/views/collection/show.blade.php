@@ -43,8 +43,13 @@
                                     <i class="nc-icon nc-tag-content"></i> {{$value->title}}
                                     <small>
                                         [<a href="{{route('collectionItem.edit', ['id' => $value->id])}}">Edit</a>]
-                                        [<a href="">Delete</a>]
                                     </small>
+                                    <form action="{{route('collectionItem.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                        @csrf
+                                        @method('delete')
+                                        <input name="collection_id" type="hidden" value="{{$value->collection_id}}">
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                    </form>
                                 </h3>
                                 {!!$value->description!!}
                                 <hr>

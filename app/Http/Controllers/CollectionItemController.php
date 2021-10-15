@@ -43,4 +43,16 @@ class CollectionItemController extends Controller
             dd($response->getBody()->getContents());
         }
     }
+
+    public function delete(Request $request)
+    {
+        $response = Http::withToken($this->tocken())->delete($this->url.$request->id, []);
+
+        if($response->successful())
+        {
+            return redirect()->route('collection.show', ['id' => $request->collection_id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
 }
