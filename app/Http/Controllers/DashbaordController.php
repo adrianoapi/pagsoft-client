@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+class DashbaordController extends Controller
+{
+    public function index()
+    {
+        return response()->view('dashboard.index');
+    }
+
+    public function finance()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/dashbaord/finance');
+        $data = json_decode($response->getBody());
+
+        return response()->json([
+            'finance'   => view('dashboard.chart.finance', ['data' => $data,])->render(),
+        ]);
+    }
+}

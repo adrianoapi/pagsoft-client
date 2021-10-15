@@ -33,3 +33,7 @@ Route::post('collection-item',              'CollectionItemController@store' )->
 Route::put ('collection-item/{id}',         'CollectionItemController@update')->name('collectionItem.update');
 
 Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')->name('collectionItem.destroy');
+
+# DashBoard
+Route::get('dashboard', 'DashbaordController@index')->name('dashboard.index');
+Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
