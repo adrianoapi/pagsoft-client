@@ -42,7 +42,7 @@
                                 <h3>
                                     <i class="nc-icon nc-tag-content"></i> {{$value->title}}
                                     <small>
-                                        [<a href="{{route('collItems.edit', ['id' => $value->id])}}">Edit</a>]
+                                        [<a href="{{route('collectionItem.edit', ['id' => $value->id])}}">Edit</a>]
                                         [<a href="">Delete</a>]
                                     </small>
                                 </h3>

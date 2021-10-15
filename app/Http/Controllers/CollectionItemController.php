@@ -3,22 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class CollectionItemController extends Controller
 {
-    public function edit(Request $request)
+    private $url;
+
+    public function __construct()
     {
-        die($request->id);
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerItems/'.$request->id);
-        $data = json_decode($response->getBody());
-
-        dd($data);
-
-        #return view('addCollectionItem', ['collection' => $collection, 'collItem' => $collectionItem]);
+        $this->url = getenv('API_URL').'api/collectionItem/';
     }
 
-    public function update()
+    public function tocken()
     {
-        //
+        return session()->get('access_token');
+    }
+
+    public function edit(Request $request)
+    {
+        $response = Http::withToken($this->tocken())->get(getenv('API_URL').'api/collectionItem/'.$request->id);
+        $data = json_decode($response->getBody());
+
+        return response()->view('collection.edit', ['data' => $data]);
+    }
+
+    public function update(Request $request)
+    {
+        $response = Http::withToken($this->tocken())->put($this->url.$request->id, [
+            'title'       => $request->title,
+            'description' => $request->description,
+            'collection_id' => $request->collection_id,
+            'release' => $request->release,
+        ]);
+
+        if($response->successful())
+        {
+            return redirect()->route('collection.show', ['id' => $request->collection_id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
     }
 }

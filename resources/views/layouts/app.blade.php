@@ -20,6 +20,10 @@
     <!-- codemirror -->
     <link href="{!! asset('assets/css/plugins/codemirror/codemirror.css') !!}" rel="stylesheet">
     <link href="{!! asset('assets/css/plugins/codemirror/monokai.css') !!}" rel="stylesheet">
+
+    <!-- SUMMERNOTE -->
+    <link href="{!! asset('assets/css/plugins/summernote/summernote-bs4.css') !!}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -190,6 +194,9 @@
 <!-- CodeMirror -->
 <script src="{!! asset('assets/js/plugins/codemirror/codemirror.js') !!}"></script>
 <script src="{!! asset('assets/js/plugins/codemirror/mode/javascript/javascript.js') !!}"></script>
+
+<!-- SUMMERNOTE -->
+<script src="{!! asset('assets/js/plugins/summernote/summernote-bs4.js') !!}"></script>
 
 @section('scripts')
 @show
