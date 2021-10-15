@@ -19,12 +19,34 @@ class CollectionItemController extends Controller
         return session()->get('access_token');
     }
 
+    public function create(Request $request)
+    {
+        return response()->view('collectionItem.create', ['collection_id' => $request->id]);
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::withToken($this->tocken())->post($this->url, [
+            'title'       => $request->title,
+            'description' => $request->description,
+            'collection_id' => $request->collection_id,
+            'release' => $request->release,
+        ]);
+
+        if($response->successful())
+        {
+            return redirect()->route('collection.show', ['id' => $request->collection_id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
     public function edit(Request $request)
     {
         $response = Http::withToken($this->tocken())->get(getenv('API_URL').'api/collectionItem/'.$request->id);
         $data = json_decode($response->getBody());
 
-        return response()->view('collection.edit', ['data' => $data]);
+        return response()->view('collectionItem.edit', ['data' => $data]);
     }
 
     public function update(Request $request)

@@ -26,7 +26,9 @@ Route::get('/collection', 'CollectionController@index')->name('collection.idex')
 Route::get('/collection/{id}', 'CollectionController@show')->name('collection.show');
 
 # CollectionItem
-Route::get ('collection-item/edit/{id}',  'CollectionItemController@edit'  )->name('collectionItem.edit');
-Route::put ('collection-item/{id}',       'CollectionItemController@update')->name('collectionItem.update');
+Route::get ('collection-item/create/{id}',  'CollectionItemController@create')->name('collectionItem.create');
+Route::get ('collection-item/edit/{id}',    'CollectionItemController@edit'  )->name('collectionItem.edit');
+Route::post('collection-item',              'CollectionItemController@store' )->name('collectionItem.store');
+Route::put ('collection-item/{id}',         'CollectionItemController@update')->name('collectionItem.update');
 
 Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')->name('collectionItem.destroy');

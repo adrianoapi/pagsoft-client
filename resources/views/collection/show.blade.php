@@ -9,10 +9,8 @@
                     <div class="card-header ">
                         <h4 class="card-title">
                             {{$collection->title}}
-                            <small>
-                                [<a href="">New</a>]
-                            </small>
                         </h4>
+                        <a href="{{route('collectionItem.create', ['id' => $collection->id])}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
                         <p class="card-category">{!!$collection->description!!}</p>
                     </div>
                     <div class="card-body">
@@ -39,20 +37,22 @@
                         @else
 
                             @foreach($data as $value)
-                                <h3>
-                                    <i class="nc-icon nc-tag-content"></i> {{$value->title}}
-                                    <small>
-                                        [<a href="{{route('collectionItem.edit', ['id' => $value->id])}}">Edit</a>]
-                                    </small>
-                                    <form action="{{route('collectionItem.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
-                                        @csrf
-                                        @method('delete')
-                                        <input name="collection_id" type="hidden" value="{{$value->collection_id}}">
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                                    </form>
-                                </h3>
-                                {!!$value->description!!}
-                                <hr>
+                            <table>
+                                <tr>
+                                    <td><a href="{{route('collectionItem.edit', ['id' => $value->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a></td>
+                                    <td>
+                                        <form action="{{route('collectionItem.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                            @csrf
+                                            @method('delete')
+                                            <input name="collection_id" type="hidden" value="{{$value->collection_id}}">
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </form>
+                                    </td>
+                                    <td> <h3><i class="nc-icon nc-tag-content"></i> {{$value->title}}</h3></td>
+                                </tr>
+                            </table>
+                            {!!$value->description!!}
+                            <hr>
                             @endforeach
 
                         @endif
