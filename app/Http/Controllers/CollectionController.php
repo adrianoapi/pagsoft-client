@@ -24,9 +24,11 @@ class CollectionController extends Controller
 
     public function index(Request $request)
     {
+        $filter = !empty($request->filter) ? $request->filter : null;
         $page = !empty($request->page) ? $request->page : 1;
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections',[
             'page' => $page,
+            'title' => $filter,
         ]);
         $data = json_decode($response->getBody());
 
@@ -39,6 +41,7 @@ class CollectionController extends Controller
             'from' => intval($request->page) - 1,
             'to' => intval($request->page) + 1,
             'now' => intval($request->page),
+            'filter' => $filter,
         ];
 
         return response()->view('collection.index', $structure);

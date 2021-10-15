@@ -7,10 +7,22 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Striped Table with Hover</h4>
-                        <p class="card-category">Here is a subtitle for this table</p>
+                        <h4 class="card-title">Colections</h4>
                     </div>
                     <div class="card-body table-full-width table-responsive">
+
+                    <div class="fixed-table-toolbar">
+                        <div class="bars pull-left">
+                            <div class="toolbar">
+                            <form action="{{route('collection.index')}}" method="GET" style="padding: 0px;margin:0px;">
+                                @csrf
+                                @method('GET')
+                                <div class="pull-left search"><input class="form-control" name="filter" type="text" value="{{$filter}}" placeholder="Search" /></div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+
                         <table class="table table-hover table-striped">
                             <thead>
                                 <th>ID</th>
@@ -37,17 +49,17 @@
         <td>
             @if($from > 0)
                 @if($now > 2)
-                    <a href="http://127.0.0.1:8081/collection?page=1">first [{{1}}]>> </a>
+                    <a href="http://127.0.0.1:8081/collection?page=1&filter={{$filter}}">first [{{1}}]>> </a>
                 @endif
-                <a href="http://127.0.0.1:8081/collection?page={{$from}}"><< prev [{{$from}}]</a>
+                <a href="http://127.0.0.1:8081/collection?page={{$from}}&filter={{$filter}}"><< prev [{{$from}}]</a>
             @endif
         </td>
         <td><li style="display: inline; ">now [{{$now}}]</li></td>
         <td>
             @if($to <= $last_page)
-                <a href="http://127.0.0.1:8081/collection?page={{$to}}">next [{{$to}}]>> </a>
+                <a href="http://127.0.0.1:8081/collection?page={{$to}}&filter={{$filter}}">next [{{$to}}]>> </a>
                 @if($to <= $last_page - 1)
-                    <a href="http://127.0.0.1:8081/collection?page={{$last_page}}">last [{{$last_page}}]>> </a>
+                    <a href="http://127.0.0.1:8081/collection?page={{$last_page}}&filter={{$filter}}">last [{{$last_page}}]>> </a>
                 @endif
             @endif
         </td>

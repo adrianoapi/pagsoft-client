@@ -22,7 +22,8 @@ Route::get('/logout', 'LoginController@logout')->name('login.logout');
 Route::post('/login', 'LoginController@auth')->name('login.auth');
 
 # Collection
-Route::get('/collection', 'CollectionController@index')->name('collection.idex');
+Route::get('/collection', 'CollectionController@index')->name('collection.index');
+Route::get('/collection/search', 'CollectionController@search')->name('collection.search');
 Route::get('/collection/{id}', 'CollectionController@show')->name('collection.show');
 
 # CollectionItem

@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('collection.idex')}}">
+                        <a class="nav-link" href="{{route('collection.index')}}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Collections</p>
                         </a>
