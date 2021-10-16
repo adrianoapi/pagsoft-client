@@ -5,7 +5,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8" id="ajax-finance">
-
+                Loadding...
+            </div>
+            <div class="col-md-4" id="ajax-table">
+                Loadding...
             </div>
         </div>
     </div>
@@ -29,6 +32,7 @@ function showDynamic(value)
         dataType: 'json',
             success: function(data){
                $("#ajax-finance").html(data['finance']);
+               $("#ajax-table").html(data['table']);
             }
     });
 }

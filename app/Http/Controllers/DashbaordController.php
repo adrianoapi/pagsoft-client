@@ -18,7 +18,8 @@ class DashbaordController extends Controller
         $data = json_decode($response->getBody());
 
         return response()->json([
-            'finance'   => view('dashboard.chart.finance', ['data' => $data,])->render(),
+            'finance' => view('dashboard.chart.finance', ['data' => $data,])->render(),
+            'table'   => view('dashboard.chart.table',   ['data' => $data,])->render(),
         ]);
     }
 }
