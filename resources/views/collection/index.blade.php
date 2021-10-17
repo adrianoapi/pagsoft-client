@@ -49,17 +49,17 @@
         <td>
             @if($from > 0)
                 @if($now > 2)
-                    <a href="http://127.0.0.1:8081/collection?page=1&filter={{$filter}}">first [{{1}}]>> </a>
+                    <a href="/collection?page=1&filter={{$filter}}">first [{{1}}]>> </a>
                 @endif
-                <a href="http://127.0.0.1:8081/collection?page={{$from}}&filter={{$filter}}"><< prev [{{$from}}]</a>
+                <a href="/collection?page={{$from}}&filter={{$filter}}"><< prev [{{$from}}]</a>
             @endif
         </td>
         <td><li style="display: inline; ">now [{{$now}}]</li></td>
         <td>
             @if($to <= $last_page)
-                <a href="http://127.0.0.1:8081/collection?page={{$to}}&filter={{$filter}}">next [{{$to}}]>> </a>
+                <a href="/collection?page={{$to}}&filter={{$filter}}">next [{{$to}}]>> </a>
                 @if($to <= $last_page - 1)
-                    <a href="http://127.0.0.1:8081/collection?page={{$last_page}}&filter={{$filter}}">last [{{$last_page}}]>> </a>
+                    <a href="/collection?page={{$last_page}}&filter={{$filter}}">last [{{$last_page}}]>> </a>
                 @endif
             @endif
         </td>
