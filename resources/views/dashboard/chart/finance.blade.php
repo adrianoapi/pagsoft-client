@@ -30,8 +30,7 @@ foreach($data as $key => $value):
     {
         $separetor = $i > 0 ? ',' : '';
 
-        $date = explode('-', $key);
-        $labels  .= "{$separetor}'{$date[1]}/".substr($date[0],2,2)."'";
+        $labels  .= "{$separetor}'".date("M", strtotime($key))."'";
         $cost    .= $separetor.$value->lucro;
         $receipe .= $separetor.$value->despesa;
 

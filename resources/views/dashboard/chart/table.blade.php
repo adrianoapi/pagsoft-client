@@ -26,7 +26,7 @@
                         @foreach($data as $key => $value)
                             @if($i > 6)
                             <tr>
-                                <td><pre>{{$key}}</pre></td>
+                                <td><pre>{{date('M',strtotime($key))}}</pre></td>
                                 <td class=""><pre>{{number_format($value->lucro, 2, ',', '.')}}</pre></td>
                                 <td class="text-danger"><code>{{number_format($value->despesa, 2, ',', '.')}}</code></td>
                                 <td>
