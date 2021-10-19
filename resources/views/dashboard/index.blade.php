@@ -4,10 +4,10 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8" id="ajax-finance">
+            <div class="col-md-7" id="ajax-finance">
                 Loadding...
             </div>
-            <div class="col-md-4" id="ajax-table">
+            <div class="col-md-5" id="ajax-table">
                 Loadding...
             </div>
         </div>

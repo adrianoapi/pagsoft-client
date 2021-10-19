@@ -1,23 +1,51 @@
 
 
-<?php
-$dateKeySort = new ArrayObject($data);
-$dateKeySort->ksort();
-?>
-
-<table class="table table-hover table-striped">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Receita</th>
-            <th>Despesa</th>
-        </tr>
-    </thead>
-    @foreach($dateKeySort as $key => $value)
-    <tr>
-        <td>{{$key}}</td>
-        <td>{{$value->lucro}}</td>
-        <td>{{$value->despesa}}</td>
-    </tr>
-    @endforeach
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card table-with-switches">
+                <div class="card-header ">
+                    <h4 class="card-title">Despesas mensais</h4>
+                </div>
+                <div class="card-body table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Receita</th>
+                                <th>Despesa</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $dateKeySort = new ArrayObject($data);
+                        $dateKeySort->ksort();
+                        $i=0;
+                        ?>
+                        @foreach($dateKeySort as $key => $value)
+                            @if($i > 6)
+                            <tr>
+                                <td><pre>{{$key}}</pre></td>
+                                <td class=""><pre>{{number_format($value->lucro, 2, ',', '.')}}</pre></td>
+                                <td class="text-danger"><code>{{number_format($value->despesa, 2, ',', '.')}}</code></td>
+                                <td>
+                                    @if($value->lucro > $value->despesa)
+                                        <i class="nc-icon nc-stre-up text-primary"></i>
+                                    @else
+                                        <i class="nc-icon nc-stre-down text-danger"></i>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endif
+                            <?php
+                            ++$i;
+                            ?>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

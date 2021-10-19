@@ -54,11 +54,11 @@ endforeach;
             axisX: {
                 showGrid: true
             },
-            height: "245px",
+            height: "295px",
         };
 
         var responsiveOptions = [
-            ['screen and (max-width: 640px)', {
+            ['screen and (max-width: 840px)', {
                 seriesBarDistance: 5,
                 axisX: {
                     labelInterpolationFnc: function(value) {
