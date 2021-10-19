@@ -20,21 +20,24 @@ $cost    = NULL;
 $receipe = NULL;
 
 $i = 0;
+$j = 0;
 
 $dateKeySort = new ArrayObject($data);
 $dateKeySort->ksort();
 
-foreach($dateKeySort as $key => $value):
+foreach($data as $key => $value):
+    if($j > 2)
+    {
+        $separetor = $i > 0 ? ',' : '';
 
-     $separetor = $i > 0 ? ',' : '';
+        $date = explode('-', $key);
+        $labels  .= "{$separetor}'{$date[1]}/".substr($date[0],2,2)."'";
+        $cost    .= $separetor.$value->lucro;
+        $receipe .= $separetor.$value->despesa;
 
-     $date = explode('-', $key);
-     $labels  .= "{$separetor}'{$date[1]}/".substr($date[0],2,2)."'";
-     $cost    .= $separetor.$value->lucro;
-     $receipe .= $separetor.$value->despesa;
-
-     $i++;
-
+        $i++;
+    }
+    ++$j;
 endforeach;
 
 ?>

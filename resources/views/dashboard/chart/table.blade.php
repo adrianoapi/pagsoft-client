@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card table-with-switches">
                 <div class="card-header ">
-                    <h4 class="card-title">Despesas mensais</h4>
+                    <h4 class="card-title">Caixa mensal</h4>
                 </div>
                 <div class="card-body table-full-width">
                     <table class="table table-striped">
@@ -23,7 +23,7 @@
                         $dateKeySort->ksort();
                         $i=0;
                         ?>
-                        @foreach($dateKeySort as $key => $value)
+                        @foreach($data as $key => $value)
                             @if($i > 6)
                             <tr>
                                 <td><pre>{{$key}}</pre></td>
