@@ -37,3 +37,7 @@ Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')
 # DashBoard
 Route::get('dashboard', 'DashbaordController@index')->name('dashboard.index');
 Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
+
+
+# ledgerEntries
+Route::get('ledger-entry','LedgerEntryController@index')->name('ledgerEntry.index');

@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="{{route('ledgerEntry.index')}}">
                             <i class="nc-icon nc-money-coins"></i>
                             <p>Ledgers</p>
                         </a>
