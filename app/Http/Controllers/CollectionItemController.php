@@ -26,7 +26,7 @@ class CollectionItemController extends Controller
 
     public function store(Request $request)
     {
-        $response = Http::withToken($this->tocken())->post($this->url, [
+        $response = Http::withToken($this->tocken())->post(getenv('API_URL').'api/collectionItem', [
             'title'       => $request->title,
             'description' => $request->description,
             'collection_id' => $request->collection_id,
