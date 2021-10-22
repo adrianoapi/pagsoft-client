@@ -42,8 +42,8 @@
                 </div>
                 <ul class="nav">
                     @if(session()->get('access_token'))
-                    <li>
-                        <a class="nav-link {{Route::current()->getName() === 'dashboard.index' ? 'active' : ''}}" href="{{route('dashboard.index')}}">
+                    <li class="nav-item {{Route::current()->getName() === 'dashboard.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('dashboard.index')}}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
@@ -66,8 +66,8 @@
                             <p>Ledgers</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
+                    <li class="nav-item {{Route::current()->getName() === 'password.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('password.index')}}">
                             <i class="nc-icon nc-lock-circle-open"></i>
                             <p>Passowrds</p>
                         </a>

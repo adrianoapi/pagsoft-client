@@ -31,7 +31,7 @@ class LoginController extends Controller
             if(array_key_exists('access_token', $data))
             {
                 session(['access_token' => $data->access_token]);
-                return redirect()->route('login');
+                return redirect()->route('dashboard.index');
             }
         }
     }

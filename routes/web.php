@@ -42,3 +42,7 @@ Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.
 # ledgerEntries
 Route::get('ledger-entry','LedgerEntryController@index')->name('ledgerEntry.index');
 Route::get('ledger-entry/{id}', 'LedgerEntryController@show')->name('ledgerEntry.show');
+
+# Passwords
+Route::get('password', 'PasswordController@index')->name('password.index');
+Route::get('passowrd/{id}', 'PasswordController@show')->name('password.show');

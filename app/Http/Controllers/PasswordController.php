@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class LedgerEntryController extends Controller
+class PasswordController extends Controller
 {
     public function index(Request $request)
     {
         $filter = !empty($request->filter) ? $request->filter : null;
         $page = !empty($request->page) ? $request->page : 1;
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries',[
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/password',[
             'page' => $page,
             'description' => $filter,
         ]);
@@ -30,23 +30,15 @@ class LedgerEntryController extends Controller
             'filter' => $filter,
         ];
 
-        return response()->view('ledgerEntry.index', $structure);
+        return response()->view('password.index', $structure);
     }
 
     public function show(Request $request)
     {
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/collection/'.$request->id);
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/password/'.$request->id);
         $data = json_decode($response->getBody());
 
-        $structure = [
-            'collection' => $data->collection,
-            'data' => $data->ledgerItems,
-            'from' => intval($request->page) - 1,
-            'to' => intval($request->page) + 1,
-            'now' => intval($request->page),
-        ];
-
-        return response()->view('ledgerEntry.show', $structure);
+        return response()->view('password.show', ['data' => $data]);
     }
 
 }
