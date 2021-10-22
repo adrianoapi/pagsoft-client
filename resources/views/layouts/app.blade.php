@@ -43,7 +43,7 @@
                 <ul class="nav">
                     @if(session()->get('access_token'))
                     <li>
-                        <a class="nav-link" href="{{route('dashboard.index')}}">
+                        <a class="nav-link {{Route::current()->getName() === 'dashboard.index' ? 'active' : ''}}" href="{{route('dashboard.index')}}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
@@ -54,13 +54,13 @@
                             <p>User Profile</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item {{Route::current()->getName() === 'collection.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('collection.index')}}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Collections</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{Route::current()->getName() === 'ledgerEntry.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('ledgerEntry.index')}}">
                             <i class="nc-icon nc-money-coins"></i>
                             <p>Ledgers</p>
@@ -68,8 +68,8 @@
                     </li>
                     <li>
                         <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
+                            <i class="nc-icon nc-lock-circle-open"></i>
+                            <p>Passowrds</p>
                         </a>
                     </li>
                     <li>
