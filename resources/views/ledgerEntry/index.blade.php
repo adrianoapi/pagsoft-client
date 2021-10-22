@@ -14,7 +14,7 @@
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-left">
                             <div class="toolbar">
-                            <form action="{{route('collection.index')}}" method="GET" style="padding: 0px;margin:0px;">
+                            <form action="{{route('ledgerEntry.index')}}" method="GET" style="padding: 0px;margin:0px;">
                                 @csrf
                                 @method('GET')
                                 <div class="pull-left search"><input class="form-control" name="filter" type="text" value="{{$filter}}" placeholder="Search" /></div>
