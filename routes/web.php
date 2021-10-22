@@ -41,3 +41,4 @@ Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.
 
 # ledgerEntries
 Route::get('ledger-entry','LedgerEntryController@index')->name('ledgerEntry.index');
+Route::get('ledger-entry/{id}', 'LedgerEntryController@show')->name('ledgerEntry.show');

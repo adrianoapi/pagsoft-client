@@ -32,4 +32,20 @@ class LedgerEntryController extends Controller
 
         return response()->view('ledgerEntry.index', $structure);
     }
+    public function show(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/collection/'.$request->id);
+        $data = json_decode($response->getBody());
+
+        $structure = [
+            'collection' => $data->collection,
+            'data' => $data->ledgerItems,
+            'from' => intval($request->page) - 1,
+            'to' => intval($request->page) + 1,
+            'now' => intval($request->page),
+        ];
+
+        return response()->view('ledgerEntry.show', $structure);
+    }
+
 }
