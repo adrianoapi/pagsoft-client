@@ -13,7 +13,7 @@ class PasswordController extends Controller
         $page = !empty($request->page) ? $request->page : 1;
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/password',[
             'page' => $page,
-            'description' => $filter,
+            'title' => $filter,
         ]);
 
         $data = json_decode($response->getBody());
@@ -24,9 +24,9 @@ class PasswordController extends Controller
             'last_page_url' => $data->last_page_url,
             'next_page_url' => $data->next_page_url,
             'last_page' => $data->last_page,
-            'from' => intval($request->page) - 1,
-            'to' => intval($request->page) + 1,
-            'now' => intval($request->page),
+            'from' => intval($page) - 1,
+            'to' => intval($page) + 1,
+            'now' => intval($page),
             'filter' => $filter,
         ];
 

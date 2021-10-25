@@ -14,7 +14,7 @@
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-left">
                             <div class="toolbar">
-                            <form action="{{route('collection.index')}}" method="GET" style="padding: 0px;margin:0px;">
+                            <form action="{{route('password.index')}}" method="GET" style="padding: 0px;margin:0px;">
                                 @csrf
                                 @method('GET')
                                 <div class="pull-left search"><input class="form-control" name="filter" type="text" value="{{$filter}}" placeholder="Search" /></div>
@@ -42,33 +42,7 @@
                     </div>
                 </div>
             </div>
-
-
-<table border='1'>
-    <tr>
-        <td>
-            @if($from > 0)
-                @if($now > 2)
-                    <a href="/password?page=1&filter={{$filter}}">first [{{1}}]>> </a>
-                @endif
-                <a href="/password?page={{$from}}&filter={{$filter}}"><< prev [{{$from}}]</a>
-            @endif
-        </td>
-        <td><li style="display: inline; ">now [{{$now}}]</li></td>
-        <td>
-            @if($to <= $last_page)
-                <a href="/password?page={{$to}}&filter={{$filter}}">next [{{$to}}]>> </a>
-                @if($to <= $last_page - 1)
-                    <a href="/password?page={{$last_page}}&filter={{$filter}}">last [{{$last_page}}]>> </a>
-                @endif
-            @endif
-        </td>
-    </tr>
-<table>
-
-
-
-
+            @include('partials.pagination')
         </div>
     </div>
 </div>

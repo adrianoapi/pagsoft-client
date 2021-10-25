@@ -24,9 +24,9 @@ class LedgerEntryController extends Controller
             'last_page_url' => $data->last_page_url,
             'next_page_url' => $data->next_page_url,
             'last_page' => $data->last_page,
-            'from' => intval($request->page) - 1,
-            'to' => intval($request->page) + 1,
-            'now' => intval($request->page),
+            'from' => intval($page) - 1,
+            'to' => intval($page) + 1,
+            'now' => intval($page),
             'filter' => $filter,
         ];
 

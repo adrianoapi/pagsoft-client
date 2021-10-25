@@ -42,33 +42,7 @@
                     </div>
                 </div>
             </div>
-
-
-<table border='1'>
-    <tr>
-        <td>
-            @if($from > 0)
-                @if($now > 2)
-                    <a href="/collection?page=1&filter={{$filter}}">first [{{1}}]>> </a>
-                @endif
-                <a href="/collection?page={{$from}}&filter={{$filter}}"><< prev [{{$from}}]</a>
-            @endif
-        </td>
-        <td><li style="display: inline; ">now [{{$now}}]</li></td>
-        <td>
-            @if($to <= $last_page)
-                <a href="/collection?page={{$to}}&filter={{$filter}}">next [{{$to}}]>> </a>
-                @if($to <= $last_page - 1)
-                    <a href="/collection?page={{$last_page}}&filter={{$filter}}">last [{{$last_page}}]>> </a>
-                @endif
-            @endif
-        </td>
-    </tr>
-<table>
-
-
-
-
+            @include('partials.pagination')
         </div>
     </div>
 </div>
