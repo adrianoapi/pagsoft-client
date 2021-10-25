@@ -16,21 +16,24 @@
                                     <th>ID</th>
                                     <th>Description</th>
                                     <th>Amount</th>
+                                    <th>Total Amount</th>
                                 </tr>
                             </thhead>
                             <tbody>
                                 <? $amount = 0; ?>
                                 @foreach($data as $value)
                                 <tr>
-                                    <? $amount += $value->price; ?>
+                                    <? $amount += $value->total_price; ?>
                                     <td>{{$value->id}}</td>
                                     <td>{{$value->description}}</td>
                                     <td>{{number_format($value->price, 2,',','.')}}</td>
+                                    <td>{{number_format($value->total_price, 2,',','.')}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td>{{number_format($amount, 2,',','.')}}</td>
