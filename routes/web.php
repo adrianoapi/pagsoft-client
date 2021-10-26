@@ -38,7 +38,6 @@ Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')
 Route::get('dashboard', 'DashbaordController@index')->name('dashboard.index');
 Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
 
-
 # ledgerEntries
 Route::get('ledger-entry','LedgerEntryController@index')->name('ledgerEntry.index');
 Route::get('ledger-entry/{id}', 'LedgerEntryController@show')->name('ledgerEntry.show');
@@ -46,3 +45,6 @@ Route::get('ledger-entry/{id}', 'LedgerEntryController@show')->name('ledgerEntry
 # Passwords
 Route::get('password', 'PasswordController@index')->name('password.index');
 Route::get('passowrd/{id}', 'PasswordController@show')->name('password.show');
+
+# User
+Route::get('user', 'UserController@index')->name('user.index');

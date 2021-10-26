@@ -48,8 +48,8 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
+                    <li class="nav-item {{Route::current()->getName() === 'user.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>User Profile</p>
                         </a>

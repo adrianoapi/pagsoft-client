@@ -14,6 +14,7 @@ class LedgerEntryController extends Controller
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries',[
             'page' => $page,
             'description' => $filter,
+            'limit' => 20,
         ]);
 
         $data = json_decode($response->getBody());
