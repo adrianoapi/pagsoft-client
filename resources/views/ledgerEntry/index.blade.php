@@ -41,7 +41,13 @@
                                         <br><small>{{$ledger_group[$value->ledger_group_id]['title']}}</small>
                                     </td>
                                     <td><pre>{{$transition_type[$value->transition_type_id]['title']}}</pre></td>
-                                    <td><pre>{{number_format($value->amount, 2, ',', '.')}}</pre></td>
+                                    <td>
+                                        @if($transition_type[$value->transition_type_id]['action'] == 'expensive')
+                                        <code>{{number_format($value->amount, 2, ',', '.')}}</code>
+                                        @else
+                                        <pre>{{number_format($value->amount, 2, ',', '.')}}</pre>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
