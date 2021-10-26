@@ -17,7 +17,7 @@
                                 <form action="{{route('ledgerEntry.index')}}" method="GET" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('GET')
-                                    <div class="pull-left search"><input class="form-control" name="filter" type="text" value="{{$filter}}" placeholder="Search" /></div>
+                                    @include('partials.search')
                                 </form>
                                 </div>
                             </div>
