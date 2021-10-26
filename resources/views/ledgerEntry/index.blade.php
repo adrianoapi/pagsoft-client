@@ -26,18 +26,21 @@
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Date</th>
                                     <th>Description</th>
+                                    <th>trantion</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($data as $value)
                                 <tr>
-                                    <td>{{$value->id}}</td>
                                     <td><pre>{{$value->entry_date}}</pre></td>
-                                    <td><a href="{{route('ledgerEntry.show', ['id' => $value->id])}}">{{$value->description}}</td>
+                                    <td>
+                                        <a href="{{route('ledgerEntry.show', ['id' => $value->id])}}">{{$value->description}}</a>
+                                        <br><small>{{$ledger_group[$value->ledger_group_id]['title']}}</small>
+                                    </td>
+                                    <td><pre>{{$transition_type[$value->transition_type_id]['title']}}</pre></td>
                                     <td><pre>{{number_format($value->amount, 2, ',', '.')}}</pre></td>
                                 </tr>
                             @endforeach

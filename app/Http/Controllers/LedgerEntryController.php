@@ -19,6 +19,8 @@ class LedgerEntryController extends Controller
         $data = json_decode($response->getBody());
 
         $structure = [
+            'ledger_group'    => $this->ledgerGroupToArray(session('ledger_group')),
+            'transition_type' => $this->transitionTypeToArray(session('transition_type')),
             'data' => $data->data,
             'first_page_url' => $data->first_page_url,
             'last_page_url' => $data->last_page_url,
@@ -47,6 +49,33 @@ class LedgerEntryController extends Controller
         ];
 
         return response()->view('ledgerEntry.show', $structure);
+    }
+
+    public function ledgerGroupToArray(array $data)
+    {
+        $arr = [];
+        foreach($data as $value):
+            $arr[$value->id] = [
+                'ledger_group_id' => $value->ledger_group_id,
+                'title' => $value->title,
+            ];
+        endforeach;
+
+        return $arr;
+    }
+
+    public function transitionTypeToArray(array $data)
+    {
+        $arr = [];
+        foreach($data as $value):
+            $arr[$value->id] = [
+                'title' => $value->title,
+                'description' => $value->description,
+                'action' => $value->action,
+            ];
+        endforeach;
+
+        return $arr;
     }
 
 }

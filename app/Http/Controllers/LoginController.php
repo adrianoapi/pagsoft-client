@@ -31,6 +31,9 @@ class LoginController extends Controller
             if(array_key_exists('access_token', $data))
             {
                 session(['access_token' => $data->access_token]);
+                $this->setLedgerGroup();
+                $this->setTransitionType();
+
                 return redirect()->route('dashboard.index');
             }
         }
@@ -41,5 +44,21 @@ class LoginController extends Controller
         session()->forget('access_token');
         session()->flush();
         return redirect()->route('login');
+    }
+
+    private function setLedgerGroup()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerGroup/list');
+        $data = json_decode($response->getBody());
+
+        session(['ledger_group' => $data]);
+    }
+
+    private function setTransitionType()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/transitionType/list');
+        $data = json_decode($response->getBody());
+
+        session(['transition_type' => $data]);
     }
 }
