@@ -48,3 +48,6 @@ Route::get('passowrd/{id}', 'PasswordController@show')->name('password.show');
 
 # User
 Route::get('user', 'UserController@index')->name('user.index');
+
+# FixedCost
+Route::get ('fixed-cost', 'FixedCostController@index')->name('fixedCost.index');

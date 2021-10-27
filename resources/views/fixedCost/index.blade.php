@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Ledger Entry</h4>
+                        <h4 class="card-title">Fixed Cost</h4>
 
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -15,12 +15,12 @@
                         <div class="fixed-table-toolbar">
                             <div class="bars pull-left">
                                 <div class="toolbar">
-                                    <form action="{{route('ledgerEntry.index')}}" method="GET" style="padding: 0px;margin:0px;">
+                                    <form action="{{route('fixedCost.index')}}" method="GET" style="padding: 0px;margin:0px;">
                                         @csrf
                                         @method('GET')
                                         @include('partials.search')
 
-                                        <a href="{{route('fixedCost.index')}}" class="btn btn-primary"><i class="nc-icon nc-single-copy-04"></i> Fixed Costs</a>
+                                        <a href="{{route('ledgerEntry.index')}}" class="btn btn-primary"><i class="nc-icon nc-money-coins"></i> Ledgers</a>
 
                                     </form>
                                 </div>

@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class LedgerEntryController extends UtilController
+class FixedCostController extends UtilController
 {
     public function index(Request $request)
     {
         $filter = !empty($request->filter) ? $request->filter : null;
-        $page = !empty($request->page) ? $request->page : 1;
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries',[
+        $page   = !empty($request->page) ? $request->page : 1;
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/fixedCost',[
             'page' => $page,
             'description' => $filter,
             'limit' => 20,
@@ -33,23 +33,6 @@ class LedgerEntryController extends UtilController
             'filter' => $filter,
         ];
 
-        return response()->view('ledgerEntry.index', $structure);
+        return response()->view('fixedCost.index', $structure);
     }
-
-    public function show(Request $request)
-    {
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/collection/'.$request->id);
-        $data = json_decode($response->getBody());
-
-        $structure = [
-            'collection' => $data->collection,
-            'data' => $data->ledgerItems,
-            'from' => intval($request->page) - 1,
-            'to' => intval($request->page) + 1,
-            'now' => intval($request->page),
-        ];
-
-        return response()->view('ledgerEntry.show', $structure);
-    }
-
 }
