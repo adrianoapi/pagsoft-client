@@ -21,6 +21,7 @@
                                         @include('partials.search')
 
                                         <a href="{{route('fixedCost.index')}}" class="btn btn-primary"><i class="nc-icon nc-single-copy-04"></i> Fixed Costs</a>
+                                        <a href="{{route('ledgerEntry.create')}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
 
                                     </form>
                                 </div>

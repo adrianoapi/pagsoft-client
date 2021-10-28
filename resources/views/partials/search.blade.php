@@ -1,3 +1,3 @@
 <div class="pull-left search">
-    {{Form::text('filter', '', array('class' => 'form-control', 'value' => $filter, 'placeholder' => 'Search'))}}
+    {{Form::text('filter', $filter, array('class' => 'form-control', 'placeholder' => 'Search'))}}
 </div>

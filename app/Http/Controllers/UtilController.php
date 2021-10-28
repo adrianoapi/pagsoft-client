@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class UtilController extends Controller
 {
+    public function arrayToSelect(array $data)
+    {
+        $select = [];
+        foreach($data as $value):
+            $select[$value->id] = $value->title;
+        endforeach;
+
+        return $select;
+    }
+
     public function ledgerGroupToArray(array $data)
     {
         $arr = [];
