@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Fixed Cost</h4>
+                        <h4 class="card-title">Trash Fixed Cost</h4>
 
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -20,8 +20,7 @@
                                         @method('GET')
                                         @include('partials.search')
 
-                                        <a href="{{route('ledgerEntry.index')}}" class="btn btn-primary"><i class="nc-icon nc-money-coins"></i> Ledgers</a>
-                                        <a href="{{route('fixedCost.trash')}}" class="btn btn-primary"><i class="nc-icon nc-watch-time"></i> Trash</a>
+                                        <a href="{{route('fixedCost.index')}}" class="btn btn-primary"><i class="nc-icon nc-single-copy-04"></i> Fixed Cost</a>
 
                                     </form>
                                 </div>
