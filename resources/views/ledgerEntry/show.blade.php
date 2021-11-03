@@ -9,12 +9,34 @@
                     <div class="card-header ">
                         <h4 class="card-title">Ledger Entries</h4>
                     </div>
+
+                    <div class="fixed-table-toolbar">
+                        <div class="bars pull-left">
+                            <div class="toolbar">
+                                <form action="{{route('ledgerItem.store')}}" method="POST" style="padding: 0px;margin:0px;">
+                                    @csrf
+                                    @method('POST')
+
+                                    {{Form::text('description', '', array('class' => 'form-control', 'placeholder' => 'Description'))}}
+                                    {{Form::number('quantity', '', array('class' => 'form-control', 'placeholder' => 'Quantity'))}}
+                                    {{Form::text('price', '', array('class' => 'form-control', 'placeholder' => 'price'))}}
+                                    {{Form::text('total_price', '', array('class' => 'form-control', 'placeholder' => 'total_price'))}}
+                                    {{Form::hidden('ledger_entry_id', $collection->id)}}
+
+                                    {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body table-full-width table-responsive">
                         <table class="table table-striped">
                             <thhead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Action</th>
                                     <th>Description</th>
+                                    <th>Quantity</th>
                                     <th>Amount</th>
                                     <th>Total Amount</th>
                                 </tr>
@@ -24,8 +46,16 @@
                                 @foreach($data as $value)
                                 <tr>
                                     <? $amount += $value->total_price; ?>
-                                    <td>{{$value->id}}</td>
+                                    <td>
+                                        <form action="{{route('ledgerItem.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                            @csrf
+                                            @method('delete')
+                                            <input name="ledger_entry_id" type="hidden" value="{{$value->ledger_entry_id}}">
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </form>
+                                    </td>
                                     <td>{{$value->description}}</td>
+                                    <td>{{$value->quantity}}</td>
                                     <td>{{number_format($value->price, 2,',','.')}}</td>
                                     <td>{{number_format($value->total_price, 2,',','.')}}</td>
                                 </tr>
@@ -33,9 +63,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="4"></td>
                                     <td>{{number_format($amount, 2,',','.')}}</td>
                                 </tr>
                             </tfoot>

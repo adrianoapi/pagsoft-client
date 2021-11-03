@@ -44,6 +44,10 @@ Route::get('ledger-entry/create', 'LedgerEntryController@create')->name('ledgerE
 Route::get('ledger-entry/{id}', 'LedgerEntryController@show')->name('ledgerEntry.show');
 Route::post('ledger-entry', 'LedgerEntryController@store')->name('ledgerEntry.store');
 
+# LedgerItem
+Route::post('ledger-item', 'LedgerItemController@store')->name('ledgerItem.store');
+Route::delete('ledger-item/{id}', 'LedgerItemController@destroy')->name('ledgerItem.destroy');
+
 # Passwords
 Route::get('password', 'PasswordController@index')->name('password.index');
 Route::get('passowrd/{id}', 'PasswordController@show')->name('password.show');
