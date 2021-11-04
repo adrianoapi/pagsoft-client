@@ -7,18 +7,19 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Create</h4>
+                        <h4 class="card-title">Edit</h4>
                         <p class="card-category"></p>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('ledgerEntry.store')}}" method="POST">
+                        <form action="{{route('ledgerEntry.update')}}" method="POST">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
+                        {{Form::hidden('id', $structure['data']->id)}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('description', 'Description')}}
-                                        {{Form::text('description', '', ['class' => 'form-control', 'id' => 'description', 'placeholder' => 'description...'])}}
+                                        {{Form::text('description', $structure['data']->description, ['class' => 'form-control', 'id' => 'description', 'placeholder' => 'description...'])}}
                                     </div>
                                 </div>
                             </div>
@@ -26,7 +27,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('ledger_group_id', 'Ledger Group')}}
-                                        {{Form::select('ledger_group_id', $data['ledger_group'])}}
+                                        {{Form::select('ledger_group_id', $structure['ledger_group'], $structure['data']->ledger_group_id)}}
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +35,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('transition_type_id', 'Trantision Type')}}
-                                        {{Form::select('transition_type_id', $data['transition_type'],)}}
+                                        {{Form::select('transition_type_id', $structure['transition_type'], $structure['data']->transition_type_id)}}
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('amount', 'Amount')}}
-                                        {{Form::number('amount', '', ['class' => 'form-control', 'id' => 'amount', 'placeholder' => '0.00', 'step' => '0.01'])}}
+                                        {{Form::number('amount', $structure['data']->amount, ['class' => 'form-control', 'id' => 'amount', 'placeholder' => '0.00', 'step' => '0.01'])}}
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('entry_date', 'Entry date')}}
-                                        {{Form::text('entry_date', date('Y-m-d'), ['class' => 'form-control', 'id' => 'entry_date'])}}
+                                        {{Form::text('entry_date', $structure['data']->entry_date, ['class' => 'form-control', 'id' => 'entry_date'])}}
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('installments', 'Installments')}}
-                                        {{Form::text('installments', 0, ['class' => 'form-control', 'id' => 'installments'])}}
+                                        {{Form::text('installments', $structure['data']->installments, ['class' => 'form-control', 'id' => 'installments'])}}
                                     </div>
                                 </div>
                             </div>
