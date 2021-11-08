@@ -60,3 +60,4 @@ Route::get('user', 'UserController@index')->name('user.index');
 # FixedCost
 Route::get ('fixed-cost', 'FixedCostController@index')->name('fixedCost.index');
 Route::get ('fixed-cost/trash', 'FixedCostController@trash')->name('fixedCost.trash');
+Route::get ('fixed-cost/send-ledger/{id}', 'FixedCostController@send')->name('fixedCost.send');

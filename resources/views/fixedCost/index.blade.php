@@ -31,6 +31,7 @@
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
+                                    <th>Send</th>
                                     <th>Date</th>
                                     <th>Description</th>
                                     <th>trantion</th>
@@ -40,6 +41,7 @@
                             <tbody>
                             @foreach($data as $value)
                                 <tr>
+                                    <td><a href="{{route('fixedCost.send', ['id' => $value->id])}}" class="btn btn-success"><i class="nc-icon nc-money-coins"></i> Send Ledger</a></td>
                                     <td><pre>{{$value->entry_date}}</pre></td>
                                     <td>
                                         <a href="{{route('ledgerEntry.show', ['id' => $value->id])}}">{{$value->description}}</a>

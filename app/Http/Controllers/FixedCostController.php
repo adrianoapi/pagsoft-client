@@ -66,4 +66,47 @@ class FixedCostController extends UtilController
 
         return response()->view('fixedCost.trash', $structure);
     }
+
+    /*$response->body() : string;
+    $response->json() : array|mixed;
+    $response->object() : object;
+    $response->collect() : Illuminate\Support\Collection;
+    $response->status() : int;
+    $response->ok() : bool;
+    $response->successful() : bool;
+    $response->failed() : bool;
+    $response->serverError() : bool;
+    $response->clientError() : bool;
+    $response->header($header) : string;
+    $response->headers() : array;*/
+    public function send(Request $request)
+    {
+        $rst = $this->getById($request->id);
+        if(!empty($rst))
+        {
+            $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/ledgerEntries', [
+                'description'        => $rst->description,
+                'ledger_group_id'    => $rst->ledger_group_id,
+                'transition_type_id' => $rst->transition_type_id,
+                'amount'             => $rst->amount,
+                'installments'       => 0,
+                'entry_date'         => date('Y-m-d'),
+            ]);
+
+            if($response->successful())
+            {
+                return redirect()->route('ledgerEntry.index');
+            }else{
+                dd($response->getBody()->getContents());
+            }
+        }
+    }
+
+    public function getById(int $id)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/fixedCost/'.$id);
+        $data = json_decode($response->getBody());
+
+        return $data;
+    }
 }
