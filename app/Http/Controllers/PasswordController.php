@@ -41,4 +41,63 @@ class PasswordController extends Controller
         return response()->view('password.show', ['data' => $data]);
     }
 
+    public function edit(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/password/'.$request->id);
+        $data = json_decode($response->getBody());
+
+        return response()->view('password.edit', ['data' => $data]);
+    }
+
+    public function update(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->put(getenv('API_URL').'api/password/'.$request->id, [
+            'title' => $request->title,
+            'login' => $request->login,
+            'pass'  => $request->pass,
+            'url'   => $request->url,
+        ]);
+
+        if($response->successful())
+        {
+            return redirect()->route('password.show', ['id' => $request->id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
+    public function create()
+    {
+        return response()->view('password.create');
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/password'.$request->id, [
+            'title' => $request->title,
+            'login' => $request->login,
+            'pass'  => $request->pass,
+            'url'   => $request->url,
+        ]);
+
+        if($response->successful())
+        {
+            return redirect()->route('password.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/password/'.$request->id, []);
+
+        if($response->successful())
+        {
+            return redirect()->route('password.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
 }

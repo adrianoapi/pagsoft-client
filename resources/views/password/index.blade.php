@@ -18,6 +18,9 @@
                                 @csrf
                                 @method('GET')
                                 @include('partials.search')
+
+                                <a href="{{route('password.create')}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
+
                             </form>
                             </div>
                         </div>
@@ -34,7 +37,13 @@
                                 <tr>
                                     <td>{{$value->id}}</td>
                                     <td><a href="{{route('password.show', ['id' => $value->id])}}">{{$value->title}}</a></td>
-                                    <td>Editar</td>
+                                    <td>
+                                        <form action="{{route('password.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
