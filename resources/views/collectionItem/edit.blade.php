@@ -19,16 +19,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" name="title" id="title" class="form-control" placeholder="title" value="{{$data->title}}">
+                                        {{Form::label('title', 'Title')}}
+                                        {{Form::text('title', $data->title, ['class' => 'form-control', 'id' => 'title', 'placeholder' => 'title...'])}}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea name="description" rows="4" cols="80" id="description" class="form-control" placeholder="description..." value="">{{$data->description}}</textarea>
+                                        {{Form::label('description', 'Description')}}
+                                        {{Form::textarea('description', $data->description, ['class'=>'form-control', 'id' => 'description', 'placeholder' => 'description...', 'rows' => 4, 'cols' => 80])}}
                                     </div>
                                 </div>
                             </div>
