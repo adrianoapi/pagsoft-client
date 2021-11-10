@@ -39,12 +39,12 @@ Route::get('dashboard',         'DashbaordController@index'  )->name('dashboard.
 Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
 
 # ledgerEntries
-Route::get('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
-Route::get('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
-Route::get('ledger-entry/edit/{id}', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
-Route::get('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('ledgerEntry.show');
-Route::post('ledger-entry',          'LedgerEntryController@store' )->name('ledgerEntry.store');
-Route::put('ledger-entry',           'LedgerEntryController@update')->name('ledgerEntry.update');
+Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
+Route::get ('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
+Route::get ('ledger-entry/edit/{id}', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
+Route::get ('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('ledgerEntry.show');
+Route::post('ledger-entry',           'LedgerEntryController@store' )->name('ledgerEntry.store');
+Route::put ('ledger-entry',           'LedgerEntryController@update')->name('ledgerEntry.update');
 
 # LedgerItem
 Route::post('ledger-item',        'LedgerItemController@store'  )->name('ledgerItem.store');
@@ -64,6 +64,8 @@ Route::delete('password/destroy/{id}', 'PasswordController@delete')->name('passw
 Route::get('user', 'UserController@index')->name('user.index');
 
 # FixedCost
-Route::get ('fixed-cost',             'FixedCostController@index')->name('fixedCost.index');
-Route::get ('fixed-cost/trash',       'FixedCostController@trash')->name('fixedCost.trash');
-Route::get ('fixed-cost/ledger/{id}', 'FixedCostController@send' )->name('fixedCost.send');
+Route::get ('fixed-cost',             'FixedCostController@index'    )->name('fixedCost.index');
+Route::get ('fixed-cost/trash',       'FixedCostController@trash'    )->name('fixedCost.trash');
+Route::get ('fixed-cost/{id}/ledger', 'FixedCostController@send'     )->name('fixedCost.send');
+Route::put ('fixed-cost/{id}/trash',  'FixedCostController@sendTrash')->name('fixedCost.send.trash');
+Route::put ('fixed-cost/{id}/restore','FixedCostController@restore'  )->name('fixedCost.send.restore');

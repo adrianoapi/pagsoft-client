@@ -32,6 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>Send</th>
+                                    <th>Trash</th>
                                     <th>Date</th>
                                     <th>Description</th>
                                     <th>trantion</th>
@@ -41,7 +42,16 @@
                             <tbody>
                             @foreach($data as $value)
                                 <tr>
-                                    <td><a href="{{route('fixedCost.send', ['id' => $value->id])}}" class="btn btn-success"><i class="nc-icon nc-money-coins"></i> Send Ledger</a></td>
+                                    <td>
+                                        <a href="{{route('fixedCost.send', ['id' => $value->id])}}" class="btn btn-success"><i class="nc-icon nc-money-coins"></i> Send Ledger</a>
+                                    </td>
+                                    <td>
+                                        <form action="{{route('fixedCost.send.trash', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </form>
+                                    </td>
                                     <td><pre>{{$value->entry_date}}</pre></td>
                                     <td>
                                         <a href="{{route('ledgerEntry.show', ['id' => $value->id])}}">{{$value->description}}</a>

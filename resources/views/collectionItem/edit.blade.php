@@ -14,8 +14,8 @@
                         <form action="{{route('collectionItem.update', ['id' => $data->id])}}" method="POST">
                         @csrf
                         @method('PUT')
-                        <input name="collection_id" type="hidden" value="{{$data->collection_id}}">
-                        <input name="release" type="hidden" value="{{$data->release}}">
+                        {{Form::hidden('collection_id', $data->collection_id)}}
+                        {{Form::hidden('release', $data->release)}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Update</button>
+                            {{Form::submit('Update', ['class' => 'btn btn-info btn-fill pull-right'])}}
                             <div class="clearfix"></div>
                         </form>
                     </div>

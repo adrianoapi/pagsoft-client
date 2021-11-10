@@ -109,4 +109,28 @@ class FixedCostController extends UtilController
 
         return $data;
     }
+
+    public function sendTrash(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->put(getenv('API_URL').'api/fixedCost/'.$request->id.'/trash', []);
+
+        if($response->successful())
+        {
+            return redirect()->route('fixedCost.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
+    public function restore(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->put(getenv('API_URL').'api/fixedCost/'.$request->id.'/restore', []);
+
+        if($response->successful())
+        {
+            return redirect()->route('fixedCost.trash');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
 }
