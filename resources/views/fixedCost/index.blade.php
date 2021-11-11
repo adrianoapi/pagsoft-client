@@ -35,7 +35,7 @@
                                     <th>Trash</th>
                                     <th>Date</th>
                                     <th>Description</th>
-                                    <th>trantion</th>
+                                    <th>Transaction</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
@@ -49,7 +49,7 @@
                                         <form action="{{route('fixedCost.send.trash', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                            {{Form::submit('Login', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                     <td><pre>{{$value->entry_date}}</pre></td>

@@ -44,7 +44,7 @@
                                         <form action="{{route('fixedCost.send.restore', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja restaurar?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-circle"></i> Restore</button>
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                     <td><pre>{{$value->entry_date}}</pre></td>

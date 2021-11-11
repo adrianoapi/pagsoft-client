@@ -45,7 +45,7 @@
                                             @csrf
                                             @method('delete')
                                             <input name="collection_id" type="hidden" value="{{$value->collection_id}}">
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                     <td> <h3><i class="nc-icon nc-tag-content"></i> {{$value->title}}</h3></td>
