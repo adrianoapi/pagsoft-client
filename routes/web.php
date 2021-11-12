@@ -27,12 +27,12 @@ Route::get('/collection/search', 'CollectionController@search')->name('collectio
 Route::get('/collection/{id}',   'CollectionController@show'  )->name('collection.show');
 
 # CollectionItem
-Route::get ('collection-item/create/{id}',  'CollectionItemController@create')->name('collectionItem.create');
-Route::get ('collection-item/edit/{id}',    'CollectionItemController@edit'  )->name('collectionItem.edit');
+Route::get ('collection-item/{id}/create',  'CollectionItemController@create')->name('collectionItem.create');
+Route::get ('collection-item/{id}/edit',    'CollectionItemController@edit'  )->name('collectionItem.edit');
 Route::post('collection-item',              'CollectionItemController@store' )->name('collectionItem.store');
 Route::put ('collection-item/{id}',         'CollectionItemController@update')->name('collectionItem.update');
 
-Route::delete('collection-item/destroy/{id}', 'CollectionItemController@delete')->name('collectionItem.destroy');
+Route::delete('collection-item/{id}/destroy', 'CollectionItemController@delete')->name('collectionItem.destroy');
 
 # DashBoard
 Route::get('dashboard',         'DashbaordController@index'  )->name('dashboard.index');
@@ -41,12 +41,13 @@ Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.
 # ledgerEntries
 Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
 Route::get ('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
-Route::get ('ledger-entry/edit/{id}', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
+Route::get ('ledger-entry/{id}/edit', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
 Route::get ('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('ledgerEntry.show');
 Route::post('ledger-entry',           'LedgerEntryController@store' )->name('ledgerEntry.store');
 Route::put ('ledger-entry',           'LedgerEntryController@update')->name('ledgerEntry.update');
 
 # LedgerItem
+Route::get('ledger-item',         'LedgerItemController@index'  )->name('ledgerItem.index');
 Route::post('ledger-item',        'LedgerItemController@store'  )->name('ledgerItem.store');
 Route::delete('ledger-item/{id}', 'LedgerItemController@destroy')->name('ledgerItem.destroy');
 
@@ -54,11 +55,11 @@ Route::delete('ledger-item/{id}', 'LedgerItemController@destroy')->name('ledgerI
 Route::get('password',           'PasswordController@index' )->name('password.index');
 Route::get('password/create',    'PasswordController@create')->name('password.create');
 Route::get('passowrd/{id}',      'PasswordController@show'  )->name('password.show');
-Route::get('password/edit/{id}', 'PasswordController@edit'  )->name('password.edit');
+Route::get('password/{id}/edit', 'PasswordController@edit'  )->name('password.edit');
 Route::post('password',          'PasswordController@store' )->name('password.store');
 Route::put('password/update',    'PasswordController@update')->name('password.update');
 
-Route::delete('password/destroy/{id}', 'PasswordController@delete')->name('password.destroy');
+Route::delete('password/{id}/destroy', 'PasswordController@delete')->name('password.destroy');
 
 # User
 Route::get('user', 'UserController@index')->name('user.index');
