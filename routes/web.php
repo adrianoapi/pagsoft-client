@@ -41,6 +41,7 @@ Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.
 # ledgerEntries
 Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
 Route::get ('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
+Route::get ('ledger-entry/flow',      'LedgerEntryController@flow'  )->name('ledgerEntry.flow');
 Route::get ('ledger-entry/{id}/edit', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
 Route::get ('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('ledgerEntry.show');
 Route::post('ledger-entry',           'LedgerEntryController@store' )->name('ledgerEntry.store');

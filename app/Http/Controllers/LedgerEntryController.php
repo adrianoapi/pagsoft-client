@@ -114,4 +114,43 @@ class LedgerEntryController extends UtilController
         }
     }
 
+    public function flow(Request $request)
+    {
+        $data    = NULL;
+        $id      = !empty($request->ledger_group_id ) ? $request->ledger_group_id  : null;
+        $dtBegin = !empty($request->entry_date_begin) ? $request->entry_date_begin : null;
+        $dtEnd   = !empty($request->entry_date_end  ) ? $request->entry_date_end   : null;
+
+        if(!empty($request->all()))
+        {
+            $data = $this->getFlow($request);
+        }
+
+        $structure = [
+            'ledger_group'    => $this->arrayToSelect(session('ledger_group')),
+            'transition_type' => $this->arrayToSelect(session('transition_type')),
+            'data' => $data,
+            'ledger_group_id' => $id,
+            'entry_date_begin' => $dtBegin,
+            'entry_date_end' => $dtEnd,
+        ];
+        return response()->view('ledgerEntry.flow', $structure);
+    }
+
+    private function getFlow(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/flow',[
+            'ledger_group_id'  => $request->ledger_group_id,
+            'entry_date_begin' => $request->entry_date_begin,
+            'entry_date_end'   => $request->entry_date_end,
+        ]);
+
+        if(!$response->successful())
+        {
+            dd($response->getBody()->getContents());
+        }
+
+        return json_decode($response->getBody());
+    }
+
 }

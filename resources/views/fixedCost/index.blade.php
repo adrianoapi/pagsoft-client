@@ -49,7 +49,7 @@
                                         <form action="{{route('fixedCost.send.trash', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('PUT')
-                                            {{Form::submit('Login', ['class' => 'btn btn-danger'])}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                     <td><pre>{{$value->entry_date}}</pre></td>
