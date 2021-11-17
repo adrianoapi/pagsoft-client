@@ -116,7 +116,7 @@ class LedgerEntryController extends UtilController
 
     public function flow(Request $request)
     {
-        $data[]  = ['total' => 0];
+        $data    = NULL;
         $id      = !empty($request->ledger_group_id ) ? $request->ledger_group_id  : null;
         $dtBegin = !empty($request->entry_date_begin) ? $request->entry_date_begin : null;
         $dtEnd   = !empty($request->entry_date_end  ) ? $request->entry_date_end   : null;

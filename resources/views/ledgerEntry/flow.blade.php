@@ -36,7 +36,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><pre>{{$data[0]->total}}</td>
+                                    <td>
+                                        @if(!empty($data))
+                                            {{$data[0]->total}}
+                                        @endif
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
