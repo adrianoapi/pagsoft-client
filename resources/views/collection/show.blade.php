@@ -9,6 +9,7 @@
                     <div class="card-header ">
                         <h4 class="card-title">
                             {{$collection->title}}
+                            <a href="{{route('collection.eidt', ['id' => $collection->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
                         </h4>
                         <a href="{{route('collectionItem.create', ['id' => $collection->id])}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
                         <p class="card-category">{!!$collection->description!!}</p>

@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class UtilController extends Controller
 {
+
+    public function showOrder()
+    {
+        return ['title' => 'Title', 'release' => 'Release', 'id' => 'ID'];
+    }
+
+    public function showLayout()
+    {
+        return ['list' => 'List', 'gallery' => 'Gallery'];
+    }
+
     public function arrayToSelect(array $data)
     {
         $select = [];

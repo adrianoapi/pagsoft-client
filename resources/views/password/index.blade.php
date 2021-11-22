@@ -41,7 +41,7 @@
                                         <form action="{{route('password.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('delete')
-                                            {{Form::submit('Login', ['class' => 'btn btn-danger'])}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                 </tr>

@@ -22,9 +22,11 @@ Route::get('/logout', 'LoginController@logout')->name('login.logout');
 Route::post('/login', 'LoginController@auth'  )->name('login.auth');
 
 # Collection
-Route::get('/collection',        'CollectionController@index' )->name('collection.index');
-Route::get('/collection/search', 'CollectionController@search')->name('collection.search');
-Route::get('/collection/{id}',   'CollectionController@show'  )->name('collection.show');
+Route::get('collection',           'CollectionController@index' )->name('collection.index' );
+Route::get('collection/search',    'CollectionController@search')->name('collection.search');
+Route::get('collection/{id}',      'CollectionController@show'  )->name('collection.show'  );
+Route::get('collection/{id}/edit', 'CollectionController@eidt'  )->name('collection.eidt'  );
+Route::put('collection/{id}',      'CollectionController@update')->name('collection.update');
 
 # CollectionItem
 Route::get ('collection-item/{id}/create',  'CollectionItemController@create')->name('collectionItem.create');
