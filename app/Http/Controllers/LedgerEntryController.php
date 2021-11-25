@@ -9,8 +9,10 @@ class LedgerEntryController extends UtilController
 {
     public function index(Request $request)
     {
-        $filter = !empty($request->filter) ? $request->filter : null;
-        $page = !empty($request->page) ? $request->page : 1;
+        $filter  = !empty($request->filter ) ? $request->filter  : null;
+        $page    = !empty($request->page   ) ? $request->page    : 1;
+        $beginDt = !empty($request->beginDt) ? $request->beginDt : null;
+        $endDt   = !empty($request->endDt  ) ? $request->endDt   : null;
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries',[
             'page' => $page,
             'description' => $filter,
@@ -27,10 +29,12 @@ class LedgerEntryController extends UtilController
             'last_page_url'  => $data->last_page_url,
             'next_page_url'  => $data->next_page_url,
             'last_page'      => $data->last_page,
-            'from'   => intval($page) - 1,
-            'to'     => intval($page) + 1,
-            'now'    => intval($page),
-            'filter' => $filter,
+            'from'    => intval($page) - 1,
+            'to'      => intval($page) + 1,
+            'now'     => intval($page),
+            'filter'  => $filter,
+            'beginDt' => $beginDt,
+            'endDt'   => $endDt,
         ];
 
         return response()->view('ledgerEntry.index', $structure);
@@ -118,8 +122,8 @@ class LedgerEntryController extends UtilController
     {
         $data    = NULL;
         $id      = !empty($request->ledger_group_id ) ? $request->ledger_group_id  : null;
-        $dtBegin = !empty($request->entry_date_begin) ? $request->entry_date_begin : null;
-        $dtEnd   = !empty($request->entry_date_end  ) ? $request->entry_date_end   : null;
+        $dtBegin = !empty($request->entry_date_begin) ? $request->entry_date_begin : date('Y-m-01');
+        $dtEnd   = !empty($request->entry_date_end  ) ? $request->entry_date_end   : date('Y-m-t');
 
         if(!empty($request->all()))
         {
