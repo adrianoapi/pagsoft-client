@@ -93,7 +93,8 @@ class LedgerEntryController extends UtilController
 
         if($response->successful())
         {
-            return redirect()->route('ledgerEntry.index');
+            $data = json_decode($response->getBody());
+            return redirect()->route('ledgerEntry.edit', $data->id);
         }else{
             dd($response->getBody()->getContents());
         }
