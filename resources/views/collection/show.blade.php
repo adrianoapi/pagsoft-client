@@ -15,7 +15,7 @@
                         <p class="card-category">{!!$collection->description!!}</p>
                     </div>
                     <div class="card-body">
-
+                    <?php $count = 0; ?>
                         @if($collection->layout == "gallery")
                             @foreach ($data as $value)
                                 <div class="contact-box">
@@ -34,6 +34,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                <?php ++$count; ?>
                             @endforeach
                         @else
 
@@ -54,10 +55,11 @@
                             </table>
                             {!!$value->description!!}
                             <hr>
+                            <?php ++$count; ?>
                             @endforeach
 
                         @endif
-
+                    Total: {{$count}}
                     </div>
                 </div>
             </div>
