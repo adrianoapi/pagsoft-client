@@ -119,6 +119,20 @@ class LedgerEntryController extends UtilController
         }
     }
 
+    public function delete(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/ledgerEntries/'.$request->id, [
+            'ledger_entry_id' => $request->id
+        ]);
+
+        if($response->successful())
+        {
+            return redirect()->route('ledgerEntry.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
     public function flow(Request $request)
     {
         $data    = NULL;

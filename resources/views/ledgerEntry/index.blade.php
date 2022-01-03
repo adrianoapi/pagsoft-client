@@ -37,6 +37,7 @@
                                     <th>Description</th>
                                     <th>trantion</th>
                                     <th>Amount</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +55,13 @@
                                         @else
                                         <pre>{{number_format($value->amount, 2, ',', '.')}}</pre>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <form action="{{route('ledgerEntry.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                            @csrf
+                                            @method('delete')
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

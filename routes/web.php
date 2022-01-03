@@ -49,6 +49,8 @@ Route::get ('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('led
 Route::post('ledger-entry',           'LedgerEntryController@store' )->name('ledgerEntry.store');
 Route::put ('ledger-entry',           'LedgerEntryController@update')->name('ledgerEntry.update');
 
+Route::delete('ledger-entry/{id}/destroy', 'LedgerEntryController@delete')->name('ledgerEntry.destroy');
+
 # LedgerItem
 Route::get('ledger-item',         'LedgerItemController@index'  )->name('ledgerItem.index');
 Route::post('ledger-item',        'LedgerItemController@store'  )->name('ledgerItem.store');
