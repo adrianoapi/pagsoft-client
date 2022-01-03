@@ -28,7 +28,8 @@ class LoginController extends Controller
         if(!empty($response))
         {
             $data = json_decode($response);
-            if(array_key_exists('access_token', $data))
+            #if(array_key_exists('access_token', $data))
+            if(isset($data->access_token))
             {
                 session(['access_token' => $data->access_token]);
                 $this->setLedgerGroup();
