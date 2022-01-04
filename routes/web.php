@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,11 @@ Route::post('/login', 'LoginController@auth'  )->name('login.auth');
 
 # Collection
 Route::get('collection',           'CollectionController@index' )->name('collection.index' );
+Route::get('collection/create',    'CollectionController@create')->name('collection.create');
 Route::get('collection/search',    'CollectionController@search')->name('collection.search');
 Route::get('collection/{id}',      'CollectionController@show'  )->name('collection.show'  );
 Route::get('collection/{id}/edit', 'CollectionController@eidt'  )->name('collection.eidt'  );
+Route::post('collection',          'CollectionController@store' )->name('collection.store');
 Route::put('collection/{id}',      'CollectionController@update')->name('collection.update');
 
 # CollectionItem

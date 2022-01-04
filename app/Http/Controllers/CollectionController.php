@@ -64,6 +64,37 @@ class CollectionController extends UtilController
         return response()->view('collection.show', $structure);
     }
 
+    public function create()
+    {
+        return response()->view('collection.create', [
+            'orderList' => $this->showOrder(),
+            'layoutList' => $this->showLayout()
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/collections', [
+            'title'            => $request->title,
+            'description'      => $request->description,
+            'show_id'          => !empty($request->show_id         ) ? 1 : 0,
+            'show_image'       => !empty($request->show_image      ) ? 1 : 0,
+            'show_title'       => !empty($request->show_title      ) ? 1 : 0,
+            'show_description' => !empty($request->show_description) ? 1 : 0,
+            'show_release'     => !empty($request->show_release    ) ? 1 : 0,
+            'order'            => $request->order,
+            'layout'           => $request->layout,
+        ]);
+
+        if($response->successful())
+        {
+            $data = json_decode($response->getBody());
+            return redirect()->route('collection.show', ['id' => $data->id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
     public function eidt(Request $request)
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections/'.$request->id);

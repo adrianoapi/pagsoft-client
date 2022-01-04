@@ -8,6 +8,7 @@
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
                         <h4 class="card-title">Colections</h4>
+                        <a href="{{route('collection.create')}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
                     </div>
                     <div class="card-body table-full-width table-responsive">
 
