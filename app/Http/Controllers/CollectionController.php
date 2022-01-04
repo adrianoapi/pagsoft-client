@@ -128,4 +128,16 @@ class CollectionController extends UtilController
             dd($response->getBody()->getContents());
         }
     }
+
+    public function delete(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/collections/'.$request->id, []);
+
+        if($response->successful())
+        {
+            return redirect()->route('collection.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
 }
