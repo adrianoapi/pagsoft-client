@@ -52,7 +52,7 @@
                                             @csrf
                                             @method('delete')
                                             <input name="ledger_entry_id" type="hidden" value="{{$value->ledger_entry_id}}">
-                                            {{Form::submit('Login', ['class' => 'btn btn-danger'])}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
                                     </td>
                                     <td>{{$value->description}}</td>
