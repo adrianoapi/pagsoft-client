@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{Form::submit('Update', ['class' => 'btn btn-info btn-fill pull-right'])}}
+                            {{Form::submit('Criar', ['class' => 'btn btn-info btn-fill pull-right'])}}
                             <div class="clearfix"></div>
                         </form>
                     </div>
