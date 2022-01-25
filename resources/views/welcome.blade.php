@@ -66,11 +66,11 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                       <p><a href="{{ route('login') }}" class="btn btn-default">Login</a></p>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
@@ -80,8 +80,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    O que Não nos Mata nos Torna mais Fortes
+                <div class="title">
+                    <p>Disseram eles: "Senhor, dá-nos sempre desse pão!"</p>
+					<p>Então Jesus declarou: "Eu sou o pão da vida. Aquele que vem a mim nunca terá fome; aquele que crê em mim nunca terá sede.</p>
                 </div>
             </div>
         </div>
