@@ -55,6 +55,14 @@
                                         @else
                                         <pre>{{number_format($value->amount, 2, ',', '.')}}</pre>
                                         @endif
+
+                                        @if($value->installments)
+                                            @if($value->installments > 1)
+                                                <br><small>{{$value->installments}} vezes</small>
+                                            @else
+                                                <br><small>{{$value->installments}} vez</small>
+                                            @endif
+                                        @endif
                                     </td>
                                     <td>
                                         <form action="{{route('ledgerEntry.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
