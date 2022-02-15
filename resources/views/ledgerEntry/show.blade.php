@@ -7,7 +7,10 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Ledger Entries <a href="{{route('ledgerEntry.edit', ['id' => $collection->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a></h4>
+                        <h4 class="card-title">Ledger Entries
+                            <a href="{{route('ledgerEntry.edit',  ['id' => $collection->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="{{route('ledgerEntry.clone', ['id' => $collection->id])}}" class="btn btn-warning"><i class="fa fa-pencil"></i> Clone</a>
+                        </h4>
                         <small>{{$collection->description}} - {{$collection->entry_date}}, R${{number_format($collection->amount, 2, ',', '.')}}</small>
                     </div>
 

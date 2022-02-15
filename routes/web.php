@@ -50,6 +50,7 @@ Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('led
 Route::get ('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
 Route::get ('ledger-entry/flow',      'LedgerEntryController@flow'  )->name('ledgerEntry.flow');
 Route::get ('ledger-entry/{id}/edit', 'LedgerEntryController@edit'  )->name('ledgerEntry.edit');
+Route::get ('leder-entry/{id}/clone', 'LedgerEntryController@clone' )->name('ledgerEntry.clone');
 Route::get ('ledger-entry/{id}',      'LedgerEntryController@show'  )->name('ledgerEntry.show');
 Route::post('ledger-entry',           'LedgerEntryController@store' )->name('ledgerEntry.store');
 Route::put ('ledger-entry',           'LedgerEntryController@update')->name('ledgerEntry.update');

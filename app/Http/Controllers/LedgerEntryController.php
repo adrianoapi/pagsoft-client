@@ -40,6 +40,14 @@ class LedgerEntryController extends UtilController
         return response()->view('ledgerEntry.index', $structure);
     }
 
+    public function getById(int $id)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/collection/'.$id);
+        $data = json_decode($response->getBody());
+
+        return $data;
+    }
+
     public function show(Request $request)
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/ledgerEntries/collection/'.$request->id);
@@ -130,6 +138,31 @@ class LedgerEntryController extends UtilController
             return redirect()->route('ledgerEntry.index');
         }else{
             dd($response->getBody()->getContents());
+        }
+    }
+
+    public function clone(Request $request)
+    {
+        $rst = $this->getById($request->id);
+
+        if(!empty($rst))
+        {
+            $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/ledgerEntries', [
+                'description'        => $rst->collection->description,
+                'ledger_group_id'    => $rst->collection->ledger_group_id,
+                'transition_type_id' => $rst->collection->transition_type_id,
+                'amount'             => $rst->collection->amount,
+                'entry_date'         => date('Y-m-d'),
+                'installments'       => $rst->collection->installments,
+            ]);
+
+            if($response->successful())
+            {
+                $data = json_decode($response->getBody());
+                return redirect()->route('ledgerEntry.show', ['id' => $data->id]);
+            }else{
+                dd($response->getBody()->getContents());
+            }
         }
     }
 
