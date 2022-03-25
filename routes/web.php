@@ -81,3 +81,6 @@ Route::get ('fixed-cost/trash',       'FixedCostController@trash'    )->name('fi
 Route::get ('fixed-cost/{id}/ledger', 'FixedCostController@send'     )->name('fixedCost.send');
 Route::put ('fixed-cost/{id}/trash',  'FixedCostController@sendTrash')->name('fixedCost.send.trash');
 Route::put ('fixed-cost/{id}/restore','FixedCostController@restore'  )->name('fixedCost.send.restore');
+
+# Task
+Route::get('task', 'TaskController@index')->name('task.index');

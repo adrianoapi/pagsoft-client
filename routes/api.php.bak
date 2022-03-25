@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+Route::post('imc/calculate', function (Request $request) {
+	$imc = $request->weight / ($request->height*$request->height);
+	$imcDescription = "";
+	
+        if     ($imc < 18.5 ) {$imcDescription = "Magreza";}
+		elseif ($imc < 24.9 ) {$imcDescription = "Normal";}
+		elseif ($imc <= 30.0) {$imcDescription = "Sobrepeso";}
+		elseif ($imc > 30.0 ) {$imcDescription = "Magreza";}
+		
+		
+    echo json_encode([
+	'imc' => $imc,
+	'imcDescription' => $imcDescription
+	]);
+});
+
+Route::get('imc/table', function (Request $request) {
+
+    echo json_encode([
+					
+					"0" => "Magreza",
+					"18.5" => "Normal",
+					"24.9" => "Sobrepeso",
+					"99" => "Obesidade"
+						]);
+});
+
+
