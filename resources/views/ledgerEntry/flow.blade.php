@@ -18,7 +18,7 @@
                                     <form action="{{route('ledgerEntry.flow')}}" method="GET" style="padding: 0px;margin:0px;">
                                         @csrf
                                         @method('GET')
-                                        {{Form::select('ledger_group_id', $ledger_group, $ledger_group_id)}}
+                                        {{Form::select('ledger_group_id', array_merge(['' => 'Selecione...'], $ledger_group), $ledger_group_id)}}
                                         {{Form::text('entry_date_begin', $entry_date_begin, array('class' => 'form-control', 'placeholder' => 'Begin'))}}
                                         {{Form::text('entry_date_end', $entry_date_end, array('class' => 'form-control', 'placeholder' => 'End'))}}
                                         {{Form::submit('Search', ['class' => 'btn btn-primary'])}}
