@@ -52,7 +52,6 @@ class CollectionController extends UtilController
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/collections/collection/'.$request->id);
         $data = json_decode($response->getBody());
-
         $structure = [
             'collection' => $data->collection,
             'data' => $data->items,

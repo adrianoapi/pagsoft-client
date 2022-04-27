@@ -21,7 +21,9 @@
                                 <div class="contact-box">
                                     <a href="#new-task" onclick="showAjax({{ $value->id }})" class="btn btn-sm btn-white" data-toggle="modal" data-target="#myModal5">
                                         <div class="text-center">
+                                            @if(!empty($value->images))
                                             <img alt="image" src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120">
+                                            @endif
                                             @if($collection->show_title)
                                             <div class="m-t-xs font-bold">{{$value->title}}</div>
                                             @endif
