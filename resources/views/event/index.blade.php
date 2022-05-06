@@ -92,13 +92,14 @@
                                var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
          
                                $.ajax({
-                                   url: "{{route('event.store')}}",
+                                   url: "{{route('event.update')}}",
                                    data: {
                                        title: event.title,
                                        start: start,
                                        end: end,
                                        id: event.id,
-                                       type: 'update'
+                                       type: 'update',
+                                       _token: "{{ csrf_token() }}"
                                    },
                                    type: "POST",
                                    success: function (response) {
@@ -111,10 +112,11 @@
                                if (deleteMsg) {
                                    $.ajax({
                                        type: "POST",
-                                       url: "{{route('event.store')}}",
+                                       url: "{{route('event.delete')}}",
                                        data: {
                                                id: event.id,
-                                               type: 'delete'
+                                               type: 'delete',
+                                               _token: "{{ csrf_token() }}"
                                        },
                                        success: function (response) {
                                            calendar.fullCalendar('removeEvents', event.id);
