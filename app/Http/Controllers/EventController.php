@@ -50,7 +50,9 @@ class EventController extends UtilController
             'start'    => $request->start,
             'end'      => $request->end,
             'location' => $request->location,
-            'all_day'  => !empty($request->all_day) ? 1 : 0
+            'editable' => true,
+            'all_day'  => !empty($request->all_day) ? 1 : 0,
+            'backgroundColor' => NULL
         ]);
 
         if($response->successful())
@@ -69,7 +71,9 @@ class EventController extends UtilController
             'start'    => $request->start,
             'end'      => $request->end,
             'location' => $request->location,
-            'all_day'  => !empty($request->all_day) ? 1 : 0
+            'editable' => true,
+            'all_day'  => !empty($request->all_day) ? 1 : 0,
+            'backgroundColor' => NULL
         ]);
 
         if($response->successful())
