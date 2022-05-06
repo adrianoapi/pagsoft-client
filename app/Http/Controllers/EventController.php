@@ -40,7 +40,7 @@ class EventController extends UtilController
             return response()->json($data->data);
         }
   
-        return view('event.fullcalender');
+        return view('event.index');
     }
 
     public function store(Request $request)
