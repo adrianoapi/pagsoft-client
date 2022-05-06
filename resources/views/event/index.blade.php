@@ -20,6 +20,36 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 
 @section('scripts')
@@ -27,8 +57,10 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
-
+ 
  <script type="text/javascript">
+
+ 
 
     $(document).ready(function () {
        
@@ -41,6 +73,8 @@
        var calendar = $('#calendar').fullCalendar({
                            editable: true,
                            events: "{{route('event.index')}}",
+                           eventColor: "#3788d8",
+                           eventTextColor: "#fff",
                            displayEventTime: false,
                            editable: true,
                            eventRender: function (event, element, view) {
@@ -87,6 +121,7 @@
                                    });
                                }
                            },
+                           
                            eventDrop: function (event, delta) {
                                var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                                var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
@@ -107,7 +142,14 @@
                                    }
                                });
                            },
+
                            eventClick: function (event) {
+
+                            //$('#exampleModal').modal('toggle');
+                            //$('#exampleModal').modal('show');
+                            //$('#exampleModal').modal('hide');
+                            //return false;
+                            
                                var deleteMsg = confirm("Do you really want to delete?");
                                if (deleteMsg) {
                                    $.ajax({
@@ -131,7 +173,7 @@
        });
         
        function displayMessage(message) {
-           //toastr.success(message, 'Event');
+            demo.showNotification('top','right', message, 2)
        } 
     </script>
 @endsection
