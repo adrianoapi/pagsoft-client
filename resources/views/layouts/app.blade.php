@@ -24,6 +24,9 @@
     <!-- SUMMERNOTE -->
     <link href="{!! asset('assets/css/plugins/summernote/summernote-bs4.css') !!}" rel="stylesheet">
 
+    <!-- fullcalendar -->
+    <link href="{!! asset('fullcalendar/main.min.css') !!}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -196,6 +199,9 @@
 
 <!-- SUMMERNOTE -->
 <script src="{!! asset('assets/js/plugins/summernote/summernote-bs4.js') !!}"></script>
+
+<!-- fullcalendar -->
+<script src="{!! asset('fullcalendar/main.min.js') !!}"></script>
 
 @section('scripts')
 @show

@@ -84,3 +84,8 @@ Route::put ('fixed-cost/{id}/restore','FixedCostController@restore'  )->name('fi
 
 # Task
 Route::get('task', 'TaskController@index')->name('task.index');
+
+# Event
+Route::get('event', 'EventController@index')->name('event.index');
+Route::post('event/store', 'EventController@store')->name('event.store');
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
