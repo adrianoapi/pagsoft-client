@@ -45,6 +45,12 @@ Route::delete('collection-item/{id}/destroy', 'CollectionItemController@delete')
 Route::get('dashboard',         'DashbaordController@index'  )->name('dashboard.index');
 Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
 
+# Diagram
+Route::get('diagram', 'DiagramController@index')->name('diagram.index');
+Route::get('diagram/create', 'DiagramController@index')->name('diagram.create');
+Route::get('diagram/show', 'DiagramController@index')->name('diagram.show');
+Route::get('diagram/destroy', 'DiagramController@index')->name('diagram.destroy');
+
 # ledgerEntries
 Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
 Route::get ('ledger-entry/create',    'LedgerEntryController@create')->name('ledgerEntry.create');
