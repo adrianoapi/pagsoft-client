@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Create</h4>
+                        <h4 class="card-title">Diagram Create</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('collection.store')}}" method="POST">
+                        <form action="{{route('diagram.store')}}" method="POST">
                         @csrf
                         @method('POST')
                             <div class="row">
@@ -24,68 +24,21 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        {{Form::label('description', 'Description')}}
-                                        {{Form::textarea('description', NULL, ['class'=>'form-control', 'id' => 'description', 'placeholder' => 'description...', 'rows' => 4, 'cols' => 80])}}
+                                        {{Form::label('type', 'Type')}}
+                                        {{Form::text('type', NULL, ['class' => 'form-control', 'id' => 'type', 'placeholder' => 'type...'])}}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        {{Form::label('show_id', 'Show ID')}}
-                                        {{Form::checkbox('show_id', true, NULL)}}
+                                        {{Form::label('body', 'Body')}}
+                                        {{Form::textarea('body', NULL, ['class'=>'form-control', 'id' => 'body', 'placeholder' => 'body...', 'rows' => 10, 'cols' => 80])}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('show_image', 'Show Image')}}
-                                        {{Form::checkbox('show_image', true, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('show_title', 'Show Title')}}
-                                        {{Form::checkbox('show_title', true, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('show_description', 'Show Description')}}
-                                        {{Form::checkbox('show_description', true, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('show_release', 'Show Release')}}
-                                        {{Form::checkbox('show_release', true, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('order', 'Order')}}
-                                        {{Form::select('order', $orderList, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        {{Form::label('layout', 'Layout')}}
-                                        {{Form::select('layout', $layoutList, NULL)}}
-                                    </div>
-                                </div>
-                            </div>
-                            {{Form::submit('Update', ['class' => 'btn btn-info btn-fill pull-right'])}}
+                            
+                            {{Form::submit('Save', ['class' => 'btn btn-info btn-fill pull-right'])}}
                             <div class="clearfix"></div>
                         </form>
                     </div>

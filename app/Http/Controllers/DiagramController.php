@@ -35,6 +35,28 @@ class DiagramController extends UtilController
         return response()->view('diagram.index', $structure);
     }
 
+    public function create()
+    {
+        return response()->view('diagram.create');
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/diagram', [
+            'title' => $request->title,
+            'type'  => $request->type,
+            'body'  => $request->body
+        ]);
+
+        if($response->successful())
+        {
+            $data = json_decode($response->getBody());
+            return redirect()->route('diagram.index');
+        }else{
+            dd($response->getBody()->getContents());
+        }
+    }
+
     public function show(Request $request)
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/diagram/'.$request->id);
