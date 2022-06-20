@@ -51,6 +51,8 @@ Route::get ('diagram/create', 'DiagramController@create')->name('diagram.create'
 Route::get ('diagram/{id}',   'DiagramController@show'  )->name('diagram.show');
 Route::post('diagram/store',  'DiagramController@store' )->name('diagram.store');
 
+Route::delete('diagram/{id}', 'DiagramController@delete')->name('diagram.destroy');
+
 
 Route::get('diagram/update', 'DiagramController@index')->name('diagram.update');
 Route::get('diagram/show', 'DiagramController@index')->name('diagram.show');
