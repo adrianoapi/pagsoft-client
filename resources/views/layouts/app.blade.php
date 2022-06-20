@@ -78,6 +78,12 @@
                             <p>Schedule</p>
                         </a>
                     </li>
+                    <li class="nav-item {{Route::current()->getName() === 'diagram.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('diagram.index')}}">
+                            <i class="nc-icon nc-layers-3"></i>
+                            <p>Schedule</p>
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </div>

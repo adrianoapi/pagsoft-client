@@ -46,7 +46,10 @@ Route::get('dashboard',         'DashbaordController@index'  )->name('dashboard.
 Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
 
 # Diagram
-Route::get('diagram', 'DiagramController@index')->name('diagram.index');
+Route::get('diagram',      'DiagramController@index')->name('diagram.index');
+Route::get('diagram/{id}', 'DiagramController@show' )->name('diagram.show');
+
+Route::get('diagram/update', 'DiagramController@index')->name('diagram.update');
 Route::get('diagram/create', 'DiagramController@index')->name('diagram.create');
 Route::get('diagram/show', 'DiagramController@index')->name('diagram.show');
 Route::get('diagram/destroy', 'DiagramController@index')->name('diagram.destroy');
