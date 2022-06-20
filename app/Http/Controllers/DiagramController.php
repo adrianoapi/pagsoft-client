@@ -272,7 +272,7 @@ class DiagramController extends UtilController
 
         if($response->successful())
         {
-            return redirect()->route('diagrams.index');
+            return redirect()->route('diagram.index');
         }else{
             dd($response->getBody()->getContents());
         }
