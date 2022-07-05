@@ -81,7 +81,13 @@
                     <li class="nav-item {{Route::current()->getName() === 'diagram.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('diagram.index')}}">
                             <i class="nc-icon nc-layers-3"></i>
-                            <p>Schedule</p>
+                            <p>Diagram</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{Route::current()->getName() === 'diagram.mail' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('diagram.index')}}">
+                            <i class="nc-icon nc-email-83"></i>
+                            <p>Mail</p>
                         </a>
                     </li>
                     @endif
