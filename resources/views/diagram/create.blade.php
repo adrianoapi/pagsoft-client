@@ -25,7 +25,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {{Form::label('type', 'Type')}}
-                                        {{Form::text('type', NULL, ['class' => 'form-control', 'id' => 'type', 'placeholder' => 'type...'])}}
+                                        {{Form::select('type', ['mindMap' => 'mindMap', 'flowChart' => 'flowChart'], null, ['class' => 'form-control']) }}
                                     </div>
                                 </div>
                             </div>
