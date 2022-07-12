@@ -45,7 +45,7 @@ class DiagramController extends UtilController
         $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/diagram', [
             'title' => $request->title,
             'type'  => $request->type,
-            'body'  => $request->body
+            'body'  => json_decode($request->body)
         ]);
 
         if($response->successful())
