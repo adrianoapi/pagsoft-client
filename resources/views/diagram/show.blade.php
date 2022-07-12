@@ -299,10 +299,13 @@
 
                                 <br />
                                 <br />
-                                <form action="{{route('diagram.update', ['diagram' => $diagram->id])}}" method="POST" class="form-horizontal form-bordered">
+                                <form action="{{route('diagram.update')}}" method="POST" class="form-horizontal form-bordered">
                                         @csrf
                                         @method('PUT')
 
+                                        {{Form::hidden('title', $diagram->title)}}
+                                        {{Form::hidden('type', $diagram->type)}}
+                                        {{Form::hidden('id', $diagram->id)}}
 
                                         <div class="hr-line-dashed"></div>
 

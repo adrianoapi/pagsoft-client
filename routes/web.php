@@ -50,13 +50,9 @@ Route::get ('diagram',        'DiagramController@index' )->name('diagram.index')
 Route::get ('diagram/create', 'DiagramController@create')->name('diagram.create');
 Route::get ('diagram/{id}',   'DiagramController@show'  )->name('diagram.show');
 Route::post('diagram/store',  'DiagramController@store' )->name('diagram.store');
+Route::put ('diagram/update', 'DiagramController@update')->name('diagram.update');
 
 Route::delete('diagram/{id}', 'DiagramController@delete')->name('diagram.destroy');
-
-
-Route::get('diagram/update', 'DiagramController@index')->name('diagram.update');
-Route::get('diagram/show', 'DiagramController@index')->name('diagram.show');
-Route::get('diagram/destroy', 'DiagramController@index')->name('diagram.destroy');
 
 # ledgerEntries
 Route::get ('ledger-entry',           'LedgerEntryController@index' )->name('ledgerEntry.index');
