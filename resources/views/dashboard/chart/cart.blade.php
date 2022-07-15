@@ -1,3 +1,21 @@
+<?php
+$mes   = NULL;
+$valor = NULL;
+$i=0;
+$data = array_reverse($data);
+foreach($data as $value):
+
+  $virgula = $i > 0 ? "," : NULL;
+
+  $mes   .= "{$virgula}'{$value->dt_lancamento}'";
+  $valor .= $virgula.$value->total;
+
+  $i++;
+
+ endforeach;
+
+ ?>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -16,21 +34,16 @@
 
 <script>
   const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    <?php echo $mes;?>
   ];
 
   const data2 = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Cartão de crédito',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [<?php echo $valor;?>],
     }]
   };
 
