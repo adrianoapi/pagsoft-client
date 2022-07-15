@@ -24,7 +24,7 @@
                         $i=0;
                         ?>
                         @foreach($data as $key => $value)
-                            @if($i > 6)
+                            @if($i > 8)
                             <tr>
                                 <td><pre>{{date('M',strtotime($key))}}</pre></td>
                                 <td class=""><pre>{{number_format($value->lucro, 2, ',', '.')}}</pre></td>
