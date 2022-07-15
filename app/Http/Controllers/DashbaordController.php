@@ -22,4 +22,11 @@ class DashbaordController extends Controller
             'table'   => view('dashboard.chart.table',   ['data' => $data,])->render(),
         ]);
     }
+
+    public function cart()
+    {
+        return response()->json([
+            'cart' => view('dashboard.chart.cart', [])->render(),
+        ]);
+    }
 }
