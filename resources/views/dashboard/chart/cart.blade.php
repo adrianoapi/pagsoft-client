@@ -17,17 +17,15 @@ foreach($data as $value):
  ?>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card table-with-switches">
-                <div class="card-header ">
-                    <h4 class="card-title">Caixa mensal</h4>
-                </div>
-                <div class="card-body table-full-width">
-                    <canvas id="myChart2"></canvas>
-                </div>
-            </div>
+<div class="card ">
+    <div class="card-header ">
+        <h4 class="card-title">Finance</h4>
+    </div>
+    <div class="card-body ">
+    <canvas id="myChart2"></canvas>
+    </div>
+    <div class="card-footer ">
+        <div class="legend">
         </div>
     </div>
 </div>

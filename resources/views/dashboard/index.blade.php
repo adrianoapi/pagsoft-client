@@ -11,6 +11,8 @@
             <div class="col-md-5" id="ajax-table">
                 Loadding...
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-5" id="ajax-cart">
                 Loadding...
             </div>
