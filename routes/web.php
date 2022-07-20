@@ -49,10 +49,13 @@ Route::get('dashboard/cart',    'DashbaordController@cart'   )->name('dashboard.
 # Diagram
 Route::get ('diagram',        'DiagramController@index' )->name('diagram.index');
 Route::get ('diagram/create', 'DiagramController@create')->name('diagram.create');
+Route::get ('diagram/class', 'DiagramController@class' )->name('diagram.class');
 Route::get ('diagram/{id}',   'DiagramController@show'  )->name('diagram.show');
 Route::post('diagram/store',  'DiagramController@store' )->name('diagram.store');
 Route::put ('diagram/update', 'DiagramController@update')->name('diagram.update');
 
+# Diagram / Class
+               
 Route::delete('diagram/{id}', 'DiagramController@delete')->name('diagram.destroy');
 
 # ledgerEntries

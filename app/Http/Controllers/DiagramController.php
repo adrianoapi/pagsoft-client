@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class DiagramController extends UtilController
 {
+
+    public function class()
+    {
+        return response()->view('diagram.class');
+    }
+
     public function index(Request $request)
     {
         $filter = !empty($request->filter) ? $request->filter : null;
