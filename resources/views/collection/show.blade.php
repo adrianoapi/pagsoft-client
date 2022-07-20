@@ -35,6 +35,7 @@
                                             @endif
                                         </div>
                                     </a>
+                                    <a href="{{route('collItemImages.create', ['id' => $value->id])}}">[Imagem]</a>
                                 </div>
                                 <?php ++$count; ?>
                             @endforeach
