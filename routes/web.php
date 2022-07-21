@@ -58,7 +58,7 @@ Route::put ('diagram/update', 'DiagramController@update')->name('diagram.update'
 Route::get ('images/novo/{id}', 'CollectionItemImageController@create')->name('collItemImages.create');
 Route::post('images/store',           'CollectionItemImageController@store' )->name('collItemImages.store');
 
-Route::delete('images/destroy/{collItemImage}', 'CollectionItemImageController@destroy')->name('collItemImages.destroy');
+Route::delete('images/destroy/{id}', 'CollectionItemImageController@destroy')->name('collItemImages.destroy');
 
 # Diagram / Class
                

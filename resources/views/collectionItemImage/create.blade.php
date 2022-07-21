@@ -64,11 +64,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($data->images as $value)
                         <tr>
+                            <td><img src="data:{{$value->type}};base64, {{$value->image}}" width="120" alt="" /></td>
                             <td>
-                                //
+                                {{ Form::open(['route' => ['collItemImages.destroy', $value->id],  'method' => 'POST', 'onSubmit' => "return confirm('Deseja excluir?');", 'style' => 'padding: 0px;margin:0px;']) }}
+                                    @csrf
+                                    @method('delete')
+                                    {{Form::hidden('collection_item_id', $data->id)}}
+                                    <button type="submit" class="btn btn-inverse"><i class="icon-trash"></i> Excluir</button>
+                                {{ Form::close() }}
                             </td>
                         </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

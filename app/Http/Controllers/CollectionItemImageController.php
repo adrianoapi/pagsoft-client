@@ -152,12 +152,15 @@ class CollectionItemImageController extends Controller
      * @param  \App\CollectionItemImage  $collItemImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CollectionItemImage $collItemImage)
+    public function destroy(Request $request)
     {
-        $collItem = \App\CollectionItem::where('id', $collItemImage->collection_item_id)->first();
-        $collItemImage->delete();
+        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/collectionItemImage/'.$request->id, []);
 
-        
-        return redirect()->route('collItemImages.create', ['collItem' => $collItem]);
+        if($response->successful())
+        {
+            return redirect()->route('collItemImages.create', ['id' => $request->collection_item_id]);
+        }else{
+            dd($response->getBody()->getContents());
+        }
     }
 }
