@@ -105,7 +105,8 @@ Route::put ('fixed-cost/{id}/restore','FixedCostController@restore'  )->name('fi
 Route::get('task', 'TaskController@index')->name('task.index');
 
 # Event
-Route::get('event', 'EventController@index')->name('event.index');
-Route::post('event/store', 'EventController@store')->name('event.store');
+Route::get('event',         'EventController@index' )->name('event.index');
+Route::get('event/show',    'EventController@show'  )->name('event.show');
+Route::post('event/store',  'EventController@store' )->name('event.store');
 Route::post('event/update', 'EventController@update')->name('event.update');
 Route::post('event/delete', 'EventController@delete')->name('event.delete');

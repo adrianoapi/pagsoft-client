@@ -23,6 +23,13 @@ class EventController extends UtilController
        }
     }
 
+    public function show(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/event/'.$request->id);
+
+        echo $response->getBody();
+    }
+
     public function index(Request $request)
     {
   

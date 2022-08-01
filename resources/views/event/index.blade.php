@@ -24,22 +24,45 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
     Launch demo modal
   </button>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="eventModalLabel">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <table>
+            <tbody>
+                <tr>
+                    <td>Color</td>
+                    <td id="tbEventColor"></td>
+                </tr>
+                <tr>
+                    <td>Editable</td>
+                    <td id="tbEventEditable"></td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td id="tbLocation"></td>
+                </tr>
+                <tr>
+                    <td>All day</td>
+                    <td id="tbAll_day"></td>
+                </tr>
+                <tr>
+                    <td>Notify</td>
+                    <td id="notify"></td>
+                </tr>
+            </tbody>
+          </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -145,12 +168,35 @@
 
                            eventClick: function (event) {
 
-                            //$('#exampleModal').modal('toggle');
-                            //$('#exampleModal').modal('show');
-                            //$('#exampleModal').modal('hide');
+                            //$('#eventModal').modal('toggle');
+                            //$('#eventModal').modal('show');
+                            //$('#eventModal').modal('hide');
                             //return false;
+
                             
-                               var deleteMsg = confirm("Do you really want to delete?");
+                            $('#eventModal').modal('show');
+
+                            $.ajax({
+                                type: "GET",
+                                url: "{{route('event.show')}}",
+                                data: {
+                                        id: event.id,
+                                        _token: "{{ csrf_token() }}"
+                                },
+                                success: function (response) {
+                                    var data = JSON.parse(response);
+                                    console.log(response);
+
+                                    $("#eventModalLabel").html(data.title);
+                                    $("#tbEventColor").html(data.backgroundColor);
+                                    $("#tbEventEditable").html(data.editable);
+                                    $("#tbLocation").html(data.location);
+                                    $("#tbAll_day").html(data.all_day);
+                                    
+                                }
+                            });
+
+                               /*var deleteMsg = confirm("Do you really want to delete?");
                                if (deleteMsg) {
                                    $.ajax({
                                        type: "POST",
@@ -165,7 +211,7 @@
                                            displayMessage("Event Deleted Successfully");
                                        }
                                    });
-                               }
+                               }*/
                            }
         
                        });
