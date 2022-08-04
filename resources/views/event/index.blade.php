@@ -39,35 +39,50 @@
           </button>
         </div>
         <div class="modal-body">
+        <form id="comment">
+        {{Form::hidden('event_id', NULL, ['id' => 'event_id'])}}
+        {{Form::hidden('start', NULL, ['id' => 'start'])}}
+        {{Form::hidden('end', NULL, ['id' => 'end'])}}
           <table>
             <tbody>
                 <tr>
                     <td>Color</td>
-                    <td id="tbEventColor"></td>
+                    <td>
+                        {{Form::text('title', NULL, ['class' => 'form-control', 'id' => 'title', 'placeholder' => 'title...'])}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Editable</td>
-                    <td id="tbEventEditable"></td>
+                    <td>
+                        {{Form::text('editable', NULL, ['class' => 'form-control', 'id' => 'editable', 'placeholder' => 'true/false'])}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Location</td>
-                    <td id="tbLocation"></td>
+                    <td>
+                        {{Form::text('location', NULL, ['class' => 'form-control', 'id' => 'location', 'placeholder' => 'location...'])}}
+                    </td>
                 </tr>
                 <tr>
                     <td>All day</td>
-                    <td id="tbAll_day"></td>
+                    <td>
+                        {{Form::text('all_day', NULL, ['class' => 'form-control', 'id' => 'all_day', 'placeholder' => 'true/false'])}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Notify</td>
-                    <td id="notify"></td>
+                    <td>
+                        {{Form::text('backgroundColor', NULL, ['class' => 'form-control', 'id' => 'backgroundColor', 'placeholder' => '#FFFFFF'])}}
+                    </td>
                 </tr>
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          {{Form::submit('Salvar alterações', array('name'=>'submit', 'class'=>'btn btn-primary'))}}
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -81,9 +96,31 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
  
- <script type="text/javascript">
+<script type="text/javascript">
 
- 
+$('#comment').on('submit', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: "{{route('event.update')}}",
+        data: {
+            title: $('#title').val(),
+            backgroundColor: $('#backgroundColor').val(),
+            editable: $('#editable').val(),
+            location: $('#location').val(),
+            all_day: $('#all_day').val(),
+            id: $('#event_id').val(),
+            start: $('#start').val(),
+            end: $('#end').val(),
+            type: 'update',
+            _token: "{{ csrf_token() }}"
+        },
+        type: "POST",
+        success: function (response) {
+            displayMessage("Event Updated Successfully");
+        }
+    });
+});
 
 $(document).ready(function () {
     
@@ -196,14 +233,15 @@ $(document).ready(function () {
                                         },
                                         success: function (response) {
                                             var data = JSON.parse(response);
-                                            console.log(response);
-
-                                            $("#eventModalLabel").html(data.title);
-                                            $("#tbEventColor").html(data.backgroundColor);
-                                            $("#tbEventEditable").html(data.editable);
-                                            $("#tbLocation").html(data.location);
-                                            $("#tbAll_day").html(data.all_day);
-                                            
+                                            console.log(data);
+                                            $("#title").val(data.title);
+                                            $("#backgroundColor").val(data.backgroundColor);
+                                            $("#editable").val(data.editable);
+                                            $("#location").val(data.location);
+                                            $("#all_day").val(data.all_day);
+                                            $("#event_id").val(data.id);
+                                            $("#start").val(data.start);
+                                            $("#end").val(data.end);
                                         }
                                     });
                                 }

@@ -80,7 +80,7 @@ class EventController extends UtilController
             'location' => $request->location,
             'editable' => true,
             'all_day'  => !empty($request->all_day) ? 1 : 0,
-            'backgroundColor' => NULL
+            'backgroundColor' => !empty($request->backgroundColor) ? $request->backgroundColor : NULL
         ]);
 
         if($response->successful())
