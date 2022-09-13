@@ -110,3 +110,13 @@ Route::get('event/show',    'EventController@show'  )->name('event.show');
 Route::post('event/store',  'EventController@store' )->name('event.store');
 Route::post('event/update', 'EventController@update')->name('event.update');
 Route::post('event/delete', 'EventController@delete')->name('event.delete');
+
+# Event
+Route::get('client',         'ClientController@index' )->name('client.index');
+Route::get('client/edit',    'ClientController@edit'  )->name('client.edit');
+Route::get('client/create',  'ClientController@create')->name('client.create');
+Route::post('client/store',  'ClientController@store' )->name('client.store');
+Route::put('client/update', 'ClientController@update')->name('client.update');
+Route::post('client/delete', 'ClientController@delete')->name('client.delete');
+
+Route::delete('client/{id}/destroy', 'ClientController@delete')->name('client.destroy');

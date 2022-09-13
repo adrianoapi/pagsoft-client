@@ -90,6 +90,12 @@
                             <p>Mail</p>
                         </a>
                     </li>
+                    <li class="nav-item {{Route::current()->getName() === 'client.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('client.index')}}">
+                            <i class="nc-icon nc-bag"></i>
+                            <p>Clients</p>
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </div>
