@@ -38,8 +38,22 @@
                                         <a href="{{route('cronJob.edit', ['id' => $value->id])}}">
                                             {{$value->link}}
                                         </a>
-                                        <br/>
-                                        <small>{{$value->description}}</small>
+                                        <hr>
+                                        <small class="alert alert-primary">Every Day: {{$value->every_day}}</small> &nbsp;
+                                        <small class="alert alert-primary">Every Time: {{$value->every_time}}</small> &nbsp;
+                                        <small class="alert alert-primary">Execuções: {{$value->executed}}</small> &nbsp;
+                                        @if(!empty($value->date))
+                                        <small class="alert alert-primary">Date: {{$value->date}}</small> &nbsp;
+                                        @endif
+                                        @if(!empty($value->time))
+                                        <small class="alert alert-primary">Time: {{$value->time}}</small> &nbsp;
+                                        @endif
+                                        @if(!empty($value->limit))
+                                        <small class="alert alert-primary">Limit: {{$value->limit}}</small> &nbsp;
+                                        @endif
+                                        @if(!empty($value->description))
+                                        <hr><small>{{$value->description}}</small> &nbsp;
+                                        @endif
                                     </td>
                                     <td>
                                         <form action="{{route('cronJob.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
