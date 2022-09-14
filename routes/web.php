@@ -111,7 +111,7 @@ Route::post('event/store',  'EventController@store' )->name('event.store');
 Route::post('event/update', 'EventController@update')->name('event.update');
 Route::post('event/delete', 'EventController@delete')->name('event.delete');
 
-# Event
+# Client
 Route::get('client',         'ClientController@index' )->name('client.index');
 Route::get('client/edit',    'ClientController@edit'  )->name('client.edit');
 Route::get('client/create',  'ClientController@create')->name('client.create');
@@ -120,3 +120,12 @@ Route::put('client/update', 'ClientController@update')->name('client.update');
 Route::post('client/delete', 'ClientController@delete')->name('client.delete');
 
 Route::delete('client/{id}/destroy', 'ClientController@delete')->name('client.destroy');
+
+# CronJob
+Route::get ('cron-job',        'CronJobController@index' )->name('cronJob.index');
+Route::get ('cron-job/edit',   'CronJobController@edit'  )->name('cronJob.edit');
+Route::get ('cron-job/create', 'CronJobController@create')->name('cronJob.create');
+Route::post('cron-job/store',  'CronJobController@store' )->name('cronJob.store');
+Route::put ('cron-job/update', 'CronJobController@update')->name('cronJob.update');
+
+Route::delete('cron-job/{id}/destroy', 'CronJobController@delete')->name('cronJob.destroy');

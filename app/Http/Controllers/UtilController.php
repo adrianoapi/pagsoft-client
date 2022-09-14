@@ -17,11 +17,14 @@ class UtilController extends Controller
         return ['list' => 'List', 'gallery' => 'Gallery'];
     }
 
-    public function arrayToSelect(array $data)
+    public function arrayToSelect(array $data, $_indice = '', $_value = '')
     {
-        $select = [];
+        $_indice = !empty($_indice) ? $_indice : 'id';
+        $_value  = !empty($_value ) ? $_value  : 'title';
+        $select  = [];
+
         foreach($data as $value):
-            $select[$value->id] = $value->title;
+            $select[$value->$_indice] = $value->$_value;
         endforeach;
 
         return $select;

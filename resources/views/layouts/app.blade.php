@@ -96,6 +96,12 @@
                             <p>Clients</p>
                         </a>
                     </li>
+                    <li class="nav-item {{Route::current()->getName() === 'cronJob.index' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('cronJob.index')}}">
+                            <i class="nc-icon nc-watch-time"></i>
+                            <p>Cron Job</p>
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </div>
