@@ -19,6 +19,16 @@ class LedgerItemController extends UtilController
         ]);
         $data = json_decode($response->getBody());
 
+        if($request->ajax())
+        {
+            $response = [];
+            foreach($data->data as $value):
+                $response[] = array("value"=>$value->id,"label"=>$value->description);
+            endforeach;
+
+            return json_encode($response);
+        }
+
         $structure = [
             'ledger_group'    => $this->ledgerGroupToArray(session('ledger_group')),
             'transition_type' => $this->transitionTypeToArray(session('transition_type')),

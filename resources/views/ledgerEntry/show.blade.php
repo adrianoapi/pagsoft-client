@@ -16,12 +16,18 @@
 
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-left">
-                            <div class="toolbar">
-                                <form action="{{route('ledgerItem.store')}}" method="POST" style="padding: 0px;margin:0px;">
+                            <div class="card-body">
+                                <form action="{{route('ledgerItem.store')}}" method="POST" class="frmSearch" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('POST')
 
-                                    {{Form::text('description', '', array('class' => 'form-control', 'placeholder' => 'Description'))}}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Descrição</label>
+                                            {{Form::text('description', '', array('id'=>'description','class' => 'form-control', 'placeholder' => 'Description'))}}
+                                            <div id="suggesstion-box"></div>
+                                        </div>
+                                    </div>
                                     {{Form::number('quantity', '', array('class' => 'form-control', 'placeholder' => 'Quantity'))}}
                                     {{Form::text('price', '', array('class' => 'form-control', 'placeholder' => 'price'))}}
                                     {{Form::text('total_price', '', array('class' => 'form-control', 'placeholder' => 'total_price'))}}
@@ -82,6 +88,34 @@
 
 @section('scripts')
 <script type="text/javascript">
+    $( "input[name=description]" ).keypress(function() {
+        $.ajax({
+            type: "GET",
+            url: "{{route('ledgerItem.index')}}",
+            data: 'filter=' + $(this).val(),
+            beforeSend: function() {
+                $("input[name=description]").css("background", "#FFF url({!! asset('assets/img/LoaderIcon.gif') !!}) no-repeat 165px");
+            },
+            success: function(data)
+            {
+                var obj = JSON.parse(data);
+                var str = '';
 
+                for(var i = 0; i < obj.length; i++)
+                {
+                    str += "<li onclick=\"selectCountry('" + obj[i]['label'] + "')\">" + obj[i]['label'] + "</li>";
+                }
+
+                $("#suggesstion-box").show();
+                $("#suggesstion-box").html(str);
+                $("input[name=description]").css("background", "#FFF");
+            }
+        });
+    });
+
+    function selectCountry(val) {
+        $("input[name=description]").val(val);
+        $("#suggesstion-box").hide();
+    }
 </script>
 @endsection
