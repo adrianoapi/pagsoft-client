@@ -1,9 +1,12 @@
 <?php
 $mes   = NULL;
 $valor = NULL;
+$mesD   = NULL;
+$valorD = NULL;
+
 $i=0;
-$data = array_reverse($data);
-foreach($data as $value):
+$dataC = array_reverse($data->cartao);
+foreach($dataC as $value):
 
   $virgula = $i > 0 ? "," : NULL;
 
@@ -13,7 +16,19 @@ foreach($data as $value):
   $i++;
 
  endforeach;
+ 
+$i=0;
+$dataD = array_reverse($data->debito);
+foreach($dataD as $value):
 
+  $virgula = $i > 0 ? "," : NULL;
+
+  $mesD   .= "{$virgula}'{$value->dt_lancamento}'";
+  $valorD .= $virgula.($value->total);
+
+  $i++;
+
+ endforeach;
  ?>
 
 
@@ -35,6 +50,16 @@ foreach($data as $value):
     <?php echo $mes;?>
   ];
 
+  const data1 = {
+    labels: labels,
+    datasets: [{
+      label: 'Cartão de crédito',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [<?php echo $valorD;?>],
+    }]
+  };
+
   const data2 = {
     labels: labels,
     datasets: [{
@@ -42,6 +67,12 @@ foreach($data as $value):
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [<?php echo $valor;?>],
+    },
+    {
+      label: 'Débito',
+      backgroundColor: 'rgb(102, 102, 255)',
+      borderColor: 'rgb(102, 102, 255)',
+      data: [<?php echo $valorD;?>],
     }]
   };
 

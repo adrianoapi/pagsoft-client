@@ -27,7 +27,7 @@ class DashbaordController extends Controller
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/dashbaord/cart');
         $data = json_decode($response->getBody());
-
+        
         return response()->json([
             'cart' => view('dashboard.chart.cart', ['data' => $data])->render(),
         ]);
