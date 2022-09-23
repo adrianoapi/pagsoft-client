@@ -211,7 +211,7 @@ class DiagramController extends UtilController
 
 
                         ########################################
-                        ## properties
+                        ## properties   
                         ########################################
                         if(!empty($value->properties))
                         {
