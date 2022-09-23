@@ -119,6 +119,9 @@ Route::post('client/store',  'ClientController@store' )->name('client.store');
 Route::put('client/update', 'ClientController@update')->name('client.update');
 Route::post('client/delete', 'ClientController@delete')->name('client.delete');
 
+# Message
+Route::get('message',         'MessageController@index' )->name('message.index');
+
 Route::delete('client/{id}/destroy', 'ClientController@delete')->name('client.destroy');
 
 # CronJob

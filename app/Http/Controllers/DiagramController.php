@@ -86,7 +86,7 @@ class DiagramController extends UtilController
         $data = json_decode($response->getBody());
 
         $diagram = $data->diagram;
-        
+
         if($diagram->type == 'mindMap'){
 
             $json = NULL;
@@ -124,7 +124,7 @@ class DiagramController extends UtilController
             $json .=  ']}';
             $page = 'diagram.show';
 
-        }else{
+        }elseif($diagram->type == "flowChart"){
 
             $json = NULL;
             $json .=  '{ "class": "go.GraphLinksModel",
@@ -193,9 +193,116 @@ class DiagramController extends UtilController
             endforeach;
             $json .=  ']}';
             $page = 'diagram.showFlowChart';
+        }else{
+
+            $json = NULL;
+            #$json .=  '{"nodedata":';
+
+
+                if(!empty($data->body->nodedata))
+                {
+                    $json .= "[";
+                    $i = 1;
+                    foreach($data->body->nodedata as $value): # nodedata
+                    
+                        $json .= "{";
+                        $json .=  "key:{$value->key},
+                                    name:\"{$value->name}\"";
+
+
+                        ########################################
+                        ## properties
+                        ########################################
+                        if(!empty($value->properties))
+                        {
+                            $json .= ',
+                                    "properties": [';
+                            #properties
+                            $j=0;
+                            foreach($value->properties as $valueProperties):
+                                $j++;
+                                $json .= "{
+                                name: \"{$valueProperties->name}\",
+                                type: \"{$valueProperties->type}\",
+                                visibility: \"{$valueProperties->visibility}\"}";
+
+                                if($j < count($value->properties)){
+                                    $json .= ",";
+                                }
+                            endforeach;
+                            $json .= "]";
+                          
+                        }
+
+                        ########################################
+                        ## methods
+                        ########################################
+                        if(!empty($value->methods))
+                        {
+                            $json .= ",methods: [";
+
+                            $k = 0;
+                            foreach($value->methods as $valueMethods):
+                                $json .= "{";
+                                $json .=  "name:\"{$valueMethods->name}\",
+                                            visibility:\"{$valueMethods->visibility}\"";
+
+                                        ########################################
+                                        ## parameters
+                                        ########################################
+                                        if(!empty($valueMethods->parameters))
+                                        {
+                                            $json .= ",parameters: [";
+
+                                            $l = 0;
+                                            foreach($valueMethods->parameters as $valueParameters):
+                                                $json .= "{";
+                                                $json .=  "name:\"{$valueParameters->name}\",
+                                                            type:\"{$valueParameters->type}\"";
+                                                $json .= "}";
+
+                                                if($l < count($valueMethods->parameters)){
+                                                    $json .= ",";
+                                                }
+                                                $l++;
+
+                                            endforeach;
+                                            $json .= "]";
+                                        }
+
+                                $json .= "}";
+
+                                if($k < count($value->methods)){
+                                    $json .= ",";
+                                }
+                                $k++;
+                            endforeach;
+
+                            $json .= ']';
+                        }
+
+
+                        $json .= "}";
+
+                        if($i < count($data->body->nodedata)){
+                            $json .= ",";
+                        }
+                        $i++;
+
+                    endforeach; # nodedata
+                    $json .= "]";
+
+                }else{
+                    $json .=  'NULL';
+                }
+
+            #$json .=  '}';
+            #die($json);
+            #dd($json);
+            $page = 'diagram.showClass';
         }
 
-        return view($page, ['diagram' => $diagram,'body' => $json]);
+        return view($page, ['diagram' => $diagram, 'body' => $json]);
     }
 
     public function delete(Request $request)
