@@ -180,13 +180,8 @@
         );
 
       // setup a few example class nodes and relationships
-      var nodedata = {!! $body !!};
-      console.log(nodedata);
-      var linkdata = [
-        { from: 12, to: 11, relationship: "generalization" },
-        { from: 13, to: 11, relationship: "generalization" },
-        { from: 14, to: 13, relationship: "aggregation" }
-      ];
+      var nodedata = {!! $body['nodedata'] !!};
+      var linkdata = {!! $body['linkData'] !!};
       myDiagram.model = new go.GraphLinksModel(
         {
           copiesArrays: true,

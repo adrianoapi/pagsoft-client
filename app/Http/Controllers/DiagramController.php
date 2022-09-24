@@ -195,9 +195,29 @@ class DiagramController extends UtilController
             $page = 'diagram.showFlowChart';
         }else{
 
-            $json = NULL;
-            #$json .=  '{"nodedata":';
+            $strLinkData = NULL;
 
+            if(!empty($data->body->linkData))
+            {
+                $strLinkData .= "[";
+                $i = 1;
+                foreach($data->body->linkData as $value):
+                    $strLinkData .= "{";
+                    $strLinkData .=  "from:{$value->from},
+                                      to:{$value->to},
+                                      relationship:\"{$value->relationship}\"";
+                    $strLinkData .= "}";
+
+                    if($i < count($data->body->linkData)){
+                        $strLinkData .= ",";
+                    }
+                    $i++;
+
+                endforeach;
+                $strLinkData .= "]";
+            }
+
+            $json = NULL;
 
                 if(!empty($data->body->nodedata))
                 {
@@ -296,13 +316,15 @@ class DiagramController extends UtilController
                     $json .=  'NULL';
                 }
 
-            #$json .=  '}';
-            #die($json);
-            #dd($json);
             $page = 'diagram.showClass';
         }
 
-        return view($page, ['diagram' => $diagram, 'body' => $json]);
+        $structure = [
+            'nodedata' => $json,
+            'linkData' => $strLinkData
+        ];
+        
+        return view($page, ['diagram' => $diagram, 'body' => $structure]);
     }
 
     public function delete(Request $request)
