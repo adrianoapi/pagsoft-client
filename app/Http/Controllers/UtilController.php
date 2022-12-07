@@ -56,4 +56,14 @@ class UtilController extends Controller
 
         return $arr;
     }
+
+    public function convertVisibility($v) {
+        switch ($v) {
+          case "public": return "+";
+          case "private": return "-";
+          case "protected": return "#";
+          case "package": return "~";
+          default: return $v;
+        }
+      }
 }

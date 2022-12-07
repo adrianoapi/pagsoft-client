@@ -80,6 +80,22 @@ class DiagramController extends UtilController
         }
     }
 
+    public function classList(Request $request)
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/diagram/'.$request->id);
+        $data = json_decode($response->getBody());
+
+        #dd($data->body->nodedata);
+        $nodedata = $data->body->nodedata;
+        $diagram  = $data->diagram;
+        
+        return view('diagram.classList', [
+            'diagram'    => $diagram,
+            'nodedata'   => $nodedata,
+            'controller' => $this
+        ]);
+    }
+
     public function show(Request $request)
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/diagram/'.$request->id);
@@ -123,9 +139,13 @@ class DiagramController extends UtilController
             endforeach;
             $json .=  ']}';
             $page = 'diagram.show';
+           
+            $structure = [
+                'nodedata' => $json,
+            ];
 
         }elseif($diagram->type == "flowChart"){
-
+            
             $json = NULL;
             $json .=  '{ "class": "go.GraphLinksModel",
                 "linkFromPortIdProperty": "fromPort",
@@ -193,8 +213,12 @@ class DiagramController extends UtilController
             endforeach;
             $json .=  ']}';
             $page = 'diagram.showFlowChart';
-        }else{
 
+            $structure = [
+                'nodedata' => $json,
+            ];
+        }else{
+            
             $strLinkData = NULL;
 
             if(!empty($data->body->linkData))
@@ -317,13 +341,13 @@ class DiagramController extends UtilController
                 }
 
             $page = 'diagram.showClass';
+
+            $structure = [
+                'nodedata' => $json,
+                'linkData' => $strLinkData
+            ];
         }
 
-        $structure = [
-            'nodedata' => $json,
-            'linkData' => $strLinkData
-        ];
-        
         return view($page, ['diagram' => $diagram, 'body' => $structure]);
     }
 

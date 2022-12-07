@@ -49,10 +49,11 @@ Route::get('dashboard/cart',    'DashbaordController@cart'   )->name('dashboard.
 # Diagram
 Route::get ('diagram',        'DiagramController@index' )->name('diagram.index');
 Route::get ('diagram/create', 'DiagramController@create')->name('diagram.create');
-Route::get ('diagram/class',  'DiagramController@class'  )->name('diagram.class');
 Route::get ('diagram/{id}',   'DiagramController@show'  )->name('diagram.show');
 Route::post('diagram/store',  'DiagramController@store' )->name('diagram.store');
 Route::put ('diagram/update', 'DiagramController@update')->name('diagram.update');
+
+Route::get ('diagram/{id}/class/list',   'DiagramController@classList')->name('diagram.class.list');
 
 # Images
 Route::get ('images/novo/{id}', 'CollectionItemImageController@create')->name('collItemImages.create');
