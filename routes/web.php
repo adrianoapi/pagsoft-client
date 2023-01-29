@@ -94,6 +94,8 @@ Route::delete('password/{id}/destroy', 'PasswordController@delete')->name('passw
 
 # User
 Route::get('user', 'UserController@index')->name('user.index');
+Route::get('user/create', 'UserController@create')->name('user.create');
+Route::post('user/sotore', 'UserController@store')->name('user.store');
 
 # FixedCost
 Route::get ('fixed-cost',             'FixedCostController@index'    )->name('fixedCost.index');

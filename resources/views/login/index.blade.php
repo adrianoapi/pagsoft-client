@@ -12,6 +12,14 @@
                     <div class="card-body table-full-width table-responsive">
 
                     <div class="card-body">
+
+                        
+                        @if(session('user_create'))
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {!!session('user_create')!!}
+                            </div>
+                        @endif
                         <form action="{{route('login.auth')}}" method="POST">
                         @csrf
                             <div class="row">
@@ -31,6 +39,11 @@
                             {{Form::submit('Login', ['class' => 'btn btn-info btn-fill pull-right'])}}
                             <div class="clearfix"></div>
                         </form>
+                    </div>
+
+                    <div class="card-body">
+                        <p>Não Possui conta? <a href="{{Route('user.create')}}">Click aqui</a> e cadastre-se!</p>
+                        <p>Esqueceu sua senha? <a href="">Clique aqui</a> e recupepre-a!</p>    
                     </div>
 
                     </div>
