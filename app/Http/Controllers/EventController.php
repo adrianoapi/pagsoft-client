@@ -12,7 +12,7 @@ class EventController extends UtilController
 
     public function __construct()
     {
-       //
+        $this->levelCheck();
     }
 
     public function checkAuth()

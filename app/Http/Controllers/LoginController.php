@@ -28,7 +28,6 @@ class LoginController extends Controller
         if(!empty($response))
         {
             $data = json_decode($response);
-            #if(array_key_exists('access_token', $data))
             if(isset($data->access_token))
             {
                 session(['access_token' => $data->access_token]);
@@ -38,6 +37,8 @@ class LoginController extends Controller
                 return redirect()->route('dashboard.index');
             }
         }
+
+        return \redirect()->back()->withInput()->withErrors(['Dados informados não conferem!']);
     }
 
     public function logout()

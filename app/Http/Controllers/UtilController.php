@@ -1,11 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
 class UtilController extends Controller
 {
+
+    public function levelCheck()
+    {
+        if(Auth::user()->level < 1){
+            die('Você não tem permissão!');
+        }
+    }
 
     public function showOrder()
     {
