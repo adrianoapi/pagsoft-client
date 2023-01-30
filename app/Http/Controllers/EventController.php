@@ -12,7 +12,7 @@ class EventController extends UtilController
 
     public function __construct()
     {
-        $this->levelCheck();
+        
     }
 
     public function checkAuth()
@@ -32,6 +32,11 @@ class EventController extends UtilController
 
     public function index(Request $request)
     {
+
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/auth/me');
+        $data = json_decode($response->getBody());
+
+        $this->levelCheck($data->level);
   
         if($request->ajax()) {
        

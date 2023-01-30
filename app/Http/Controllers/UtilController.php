@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class UtilController extends Controller
 {
 
-    public function levelCheck()
+    public function levelCheck($level = 0)
     {
-        if(Auth::user()->level < 1){
+        if($level < 1){
             die('Você não tem permissão!');
         }
     }
