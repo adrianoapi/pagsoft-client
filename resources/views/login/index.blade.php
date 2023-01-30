@@ -53,6 +53,10 @@
                         <p>Esqueceu sua senha? <a href="">Clique aqui</a> e recupepre-a!</p>    
                     </div>
 
+                    <div class="card-body">
+                        <p>Desenvolvedor? <a href="{{Route('api.index')}}">Click aqui</a> e acesse a API!</p>
+                    </div>
+
                     </div>
                 </div>
             </div>
