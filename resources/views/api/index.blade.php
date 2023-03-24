@@ -50,7 +50,7 @@
                             </li>
                         </ul>
 
-                        <strong>PSOT</strong>
+                        <strong>POST</strong>
                         <ul>
                             <li>POST http://pagsoft.com.br/api/password</li>
                             <li>Authorization: Bearer Token</li>
