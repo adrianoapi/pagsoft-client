@@ -22,11 +22,11 @@ class UserController extends UtilController
         $a = rand(1,9);
         $b = rand(1,5);
         $c = rand(2,5);
-        $d = rand(1,5);
+        $d = rand(1,3);
 
-        session()->put('captcha', $a+$b*$c-$d);
+        session()->put('captcha', $a+$b-$c);
 
-        return response()->view('user.create', ['captcha' => "{$a}+{$b}*{$c}-{$d}=?"]);
+        return response()->view('user.create', ['captcha' => "{$a}+{$b}-{$c}=?"]);
     }
 
     public function store(Request $request)
