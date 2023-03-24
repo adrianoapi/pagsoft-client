@@ -9,10 +9,16 @@
                     <div class="card-header ">
                         <h4 class="card-title">
                             {{$collection->title}}
+                            @if($collection->author)
                             <a href="{{route('collection.eidt', ['id' => $collection->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                            @endif
                         </h4>
+                        @if($collection->author)
                         <a href="{{route('collectionItem.create', ['id' => $collection->id])}}" class="btn btn-success"><i class="fa fa-file"></i> New</a>
+                        @endif
                         <p class="card-category">{!!$collection->description!!}</p>
+
+                        <a href="{{route('collection.index')}}" class="btn btn-info"><i class="fa fa-house"></i> Voltar</a></td>
                     </div>
                     <div class="card-body">
                     <?php $count = 0; ?>
@@ -44,14 +50,19 @@
                             @foreach($data as $value)
                             <table>
                                 <tr>
-                                    <td><a href="{{route('collectionItem.edit', ['id' => $value->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a></td>
                                     <td>
+                                        @if($collection->author)
+                                        <a href="{{route('collectionItem.edit', ['id' => $value->id])}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a></td>
+                                        @endif
+                                    <td>
+                                        @if($collection->author)
                                         <form action="{{route('collectionItem.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('delete')
                                             <input name="collection_id" type="hidden" value="{{$value->collection_id}}">
                                             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
+                                        @endif
                                     </td>
                                     <td> <h3><i class="nc-icon nc-tag-content"></i> {{$value->title}}</h3></td>
                                 </tr>

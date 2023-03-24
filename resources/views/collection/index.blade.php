@@ -36,11 +36,13 @@
                                     <td>{{$value->id}}</td>
                                     <td><a href="{{route('collection.show', ['id' => $value->id])}}">{{$value->title}}</a></td>
                                     <td>
+                                        @if(!$value->collection_user_id)
                                         <form action="{{route('collection.destroy', ['id' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                             @csrf
                                             @method('delete')
                                             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
