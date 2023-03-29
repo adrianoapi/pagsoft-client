@@ -51,31 +51,31 @@
                     <li class="nav-item {{Route::current()->getName() === 'user.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
+                            <p>Usuário Perfil</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'collection.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('collection.index')}}">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Collections</p>
+                            <p>Coleções (liberado)</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'ledgerEntry.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('ledgerEntry.index')}}">
                             <i class="nc-icon nc-money-coins"></i>
-                            <p>Ledgers</p>
+                            <p>Financeiro (liberado)</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'password.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('password.index')}}">
                             <i class="nc-icon nc-lock-circle-open"></i>
-                            <p>Passowrds</p>
+                            <p>Senhas</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'event.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('event.index')}}">
                             <i class="nc-icon nc-time-alarm"></i>
-                            <p>Schedule</p>
+                            <p>Agenda (liberado)</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'diagram.index' ? 'active' : ''}}">
