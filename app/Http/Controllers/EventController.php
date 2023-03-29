@@ -36,8 +36,6 @@ class EventController extends UtilController
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/auth/me');
         $data = json_decode($response->getBody());
 
-        $this->levelCheck($data->level);
-  
         if($request->ajax()) {
        
             $filter = !empty($request->filter) ? $request->filter : null;
