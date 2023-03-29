@@ -69,7 +69,7 @@
                     <li class="nav-item {{Route::current()->getName() === 'password.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('password.index')}}">
                             <i class="nc-icon nc-lock-circle-open"></i>
-                            <p>Senhas</p>
+                            <p>Senhas (liberado)</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'event.index' ? 'active' : ''}}">
