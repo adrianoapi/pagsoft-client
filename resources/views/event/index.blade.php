@@ -1,18 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.padraoText {
+    background-color:blue;
+}
+.vermelhoText {
+    background-color:#FE2E64;
+}
+.azulClaroText {
+    background-color:#85C1E9;
+}
+.roxoText {
+    background-color:#BB62E5;
+}
+.marromText {
+    background-color:#5F3F0C;
+}
+.verdeClaroText {
+    background-color:#58D68D;
+}
+.verdeText {
+    background-color:#59b300;
+}
+</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">Ledger Entry</h4>
-
                     </div>
                     <div class="card-body table-full-width table-responsive">
 
-                            <div id='calendar'></div>  
+                        <div id='calendar'></div>  
 
                     </div>
                 </div>
@@ -23,17 +44,12 @@
 
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
-    Launch demo modal
-  </button>
-  
   <!-- Modal -->
   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="eventModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="eventModalLabel">Editar Evento</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -48,10 +64,10 @@
                 <tr>
                     <td>Color</td>
                     <td>
-                        {{Form::text('title', NULL, ['class' => 'form-control', 'id' => 'title', 'placeholder' => 'title...'])}}
+                        {{Form::textarea('title', NULL, ['class' => 'form-control', 'id' => 'title', 'placeholder' => 'title...'])}}
                     </td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                     <td>Editable</td>
                     <td>
                         {{Form::text('editable', NULL, ['class' => 'form-control', 'id' => 'editable', 'placeholder' => 'true/false'])}}
@@ -60,19 +76,28 @@
                 <tr>
                     <td>Location</td>
                     <td>
-                        {{Form::text('location', NULL, ['class' => 'form-control', 'id' => 'location', 'placeholder' => 'location...'])}}
+                        {{Form::textarea('location', NULL, ['class' => 'form-control', 'id' => 'location', 'placeholder' => 'location...'])}}
                     </td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                     <td>All day</td>
                     <td>
                         {{Form::text('all_day', NULL, ['class' => 'form-control', 'id' => 'all_day', 'placeholder' => 'true/false'])}}
                     </td>
                 </tr>
                 <tr>
-                    <td>Notify</td>
+                    <td>Cor</td>
                     <td>
                         {{Form::text('backgroundColor', NULL, ['class' => 'form-control', 'id' => 'backgroundColor', 'placeholder' => '#FFFFFF'])}}
+                        <select id="mySelect" class="form-control">
+                            <option class="padraoText" value="" >Padrão</option>
+                            <option class="vermelhoText" value="#FE2E64" >Vermelho</option>
+                            <option class="azulClaroText"   value="#85C1E9" >Azul Claro</option>
+                            <option class="roxoText" value="#BB62E5" >Roxo</option>
+                            <option class="marromText" value="#5F3F0C" >Marrom</option>
+                            <option class="verdeClaroText" value="#58D68D" >Verde Claro</option>
+                            <option class="verdeText" value="#59b300" >Verde</option>
+                        </select>
                     </td>
                 </tr>
             </tbody>
@@ -98,6 +123,15 @@
  
 <script type="text/javascript">
 
+var select = document.getElementById('mySelect');
+select.onchange = function () {
+    select.className = 'form-control '+this.options[this.selectedIndex].className;
+    console.log();
+    $("#backgroundColor").focus();
+    console.log(this.options[this.selectedIndex].value);
+    $("#backgroundColor").val(this.options[this.selectedIndex].value);
+}
+
 $('#comment').on('submit', function(e) {
     e.preventDefault();
 
@@ -117,7 +151,12 @@ $('#comment').on('submit', function(e) {
         },
         type: "POST",
         success: function (response) {
-            displayMessage("Event Updated Successfully");
+            displayMessage("Evento atualizado com sucesso!");
+            
+            //fechar modal
+            $('#eventModal').modal('hide');
+
+            $('#calendar').fullCalendar( 'refetchEvents' );
         }
     });
 });
@@ -171,6 +210,7 @@ $(document).ready(function () {
                                             {
                                                 id: data.id,
                                                 title: title,
+                                                location: location,
                                                 start: start,
                                                 end: end,
                                                 allDay: allDay
@@ -233,7 +273,6 @@ $(document).ready(function () {
                                         },
                                         success: function (response) {
                                             var data = JSON.parse(response);
-                                            console.log(data);
                                             $("#title").val(data.title);
                                             $("#backgroundColor").val(data.backgroundColor);
                                             $("#editable").val(data.editable);
