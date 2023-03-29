@@ -204,9 +204,9 @@ $(document).ready(function () {
                                     type: "POST",
                                     success: function (data) {
                                         console.log(data);
-                                        displayMessage("Event Created Successfully");
+                                        displayMessage("Evento criado com sucesso!");
         
-                                        calendar.fullCalendar('renderEvent',
+                                       /* calendar.fullCalendar('renderEvent',
                                             {
                                                 id: data.id,
                                                 title: title,
@@ -214,9 +214,9 @@ $(document).ready(function () {
                                                 start: start,
                                                 end: end,
                                                 allDay: allDay
-                                            },true);
+                                            },true);*/
         
-                                        calendar.fullCalendar('unselect');
+                                        $('#calendar').fullCalendar( 'refetchEvents' );
                                     }
                                 });
                             }
