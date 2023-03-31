@@ -9,12 +9,45 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends UtilController
 {
-    public function index()
+    public function index(Request $request)
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/auth/me');
         $data = json_decode($response->getBody());
 
-        return response()->view('user.index', ['user' => $data]);
+        $this->levelCheck($data->level);
+        
+        $filter = !empty($request->filter) ? $request->filter : null;
+        $page   = !empty($request->page) ? $request->page : 1;
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/users',[
+            'page' => $page,
+            'description' => $filter,
+            'status' => 1,
+            'limit'  => 20,
+        ]);
+        
+        $data = json_decode($response->getBody());
+
+        $structure = [
+            'data' => $data->data,
+            'first_page_url' => $data->first_page_url,
+            'last_page_url' => $data->last_page_url,
+            'next_page_url' => $data->next_page_url,
+            'last_page' => $data->last_page,
+            'from' => intval($page) - 1,
+            'to' => intval($page) + 1,
+            'now' => intval($page),
+            'filter' => $filter,
+        ];
+
+        return response()->view('user.index', $structure);
+    }
+
+    public function profile()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/auth/me');
+        $data = json_decode($response->getBody());
+
+        return response()->view('user.profile', ['user' => $data]);
     }
 
     public function create()

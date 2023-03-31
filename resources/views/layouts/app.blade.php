@@ -51,7 +51,7 @@
                     <li class="nav-item {{Route::current()->getName() === 'user.index' ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Usuário Perfil</p>
+                            <p>Usuários</p>
                         </a>
                     </li>
                     <li class="nav-item {{Route::current()->getName() === 'collection.index' ? 'active' : ''}}">
