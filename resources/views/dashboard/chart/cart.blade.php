@@ -34,7 +34,7 @@ foreach($dataD as $value):
 
 <div class="card ">
     <div class="card-header ">
-        <h4 class="card-title">Finance</h4>
+        <h4 class="card-title">Despesas Mensais</h4>
     </div>
     <div class="card-body ">
     <canvas id="myChart2"></canvas>

@@ -44,9 +44,10 @@ Route::put ('collection-item/{id}',         'CollectionItemController@update')->
 Route::delete('collection-item/{id}/destroy', 'CollectionItemController@delete')->name('collectionItem.destroy');
 
 # DashBoard
-Route::get('dashboard',         'DashbaordController@index'  )->name('dashboard.index');
-Route::get('dashboard/finance', 'DashbaordController@finance')->name('dashboard.finance');
-Route::get('dashboard/cart',    'DashbaordController@cart'   )->name('dashboard.cart');
+Route::get('dashboard',             'DashbaordController@index'  )->name('dashboard.index');
+Route::get('dashboard/finance',     'DashbaordController@finance')->name('dashboard.finance');
+Route::get('dashboard/cart',        'DashbaordController@cart'   )->name('dashboard.cart');
+Route::get('dashboard/fiance/year', 'DashbaordController@byYear' )->name('dashboard.finance.year');
 
 # Diagram
 Route::get ('diagram',        'DiagramController@index' )->name('diagram.index');

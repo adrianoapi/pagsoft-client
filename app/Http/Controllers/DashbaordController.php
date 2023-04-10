@@ -32,4 +32,14 @@ class DashbaordController extends Controller
             'cart' => view('dashboard.chart.cart', ['data' => $data])->render(),
         ]);
     }
+
+    public function byYear()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/dashbaord/finance/year');
+        $data = json_decode($response->getBody());
+
+        return response()->json([
+            'byYear' => view('dashboard.chart.finance_year', ['data' => $data])->render(),
+        ]);
+    }
 }

@@ -16,6 +16,9 @@
             <div class="col-md-5" id="ajax-cart">
                 Loadding...
             </div>
+            <div class="col-md-5" id="finance-year">
+                Loadding...
+            </div>
         </div>
     </div>
 </div>
@@ -58,8 +61,26 @@ function showCart()
         },
         dataType: 'json',
             success: function(data){
+
+                $("#ajax-cart").html(data['cart']);
+
+               showFinanceByYear();
+            }
+    });
+}
+
+function showFinanceByYear()
+{
+    $.ajax({
+        url: "{{route('dashboard.finance.year')}}",
+        type: "GET",
+        data: {
+            "_token": "{{csrf_token()}}"
+        },
+        dataType: 'json',
+            success: function(data){
                 console.log(data);
-               $("#ajax-cart").html(data['cart']);
+                $("#finance-year").html(data['byYear']);
             }
     });
 }
