@@ -36,7 +36,7 @@ class ManiaSorteioController extends UtilController
 
     public function delete(Request $request)
     {
-        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/mania/jogos/'.$request->id, [
+        $response = Http::withToken(session()->get('access_token'))->delete(getenv('API_URL').'api/mania/sorteios/'.$request->id, [
             'id' => $request->id
         ]);
 
