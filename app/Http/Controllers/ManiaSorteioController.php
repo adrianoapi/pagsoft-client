@@ -18,7 +18,7 @@ class ManiaSorteioController extends UtilController
         
         $filter = !empty($request->filter) ? $request->filter : null;
         $page   = !empty($request->page) ? $request->page : 1;
-        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/mania/jogos',[
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/mania/sorteios',[
             'page' => $page,
             'description' => $filter,
             'status' => 1,
@@ -31,7 +31,7 @@ class ManiaSorteioController extends UtilController
             'data' => $data,
         ];
 
-        return response()->view('mania.jogo', $structure);
+        return response()->view('mania.sorteio', $structure);
     }
 
     public function delete(Request $request)
@@ -42,7 +42,7 @@ class ManiaSorteioController extends UtilController
 
         if($response->successful())
         {
-            return redirect()->route('mania.jogos');
+            return redirect()->route('mania.sorteios');
         }else{
             dd($response->getBody()->getContents());
         }
