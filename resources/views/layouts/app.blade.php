@@ -102,6 +102,12 @@
                             <p>Cron Job</p>
                         </a>
                     </li>
+                    <li class="nav-item {{Route::current()->getName() === 'mania.sorteios' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('mania.sorteios')}}">
+                            <i class="nc-icon nc-controller-modern"></i>
+                            <p>Sorteios</p>
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </div>
