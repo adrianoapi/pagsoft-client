@@ -139,3 +139,7 @@ Route::post('cron-job/store',  'CronJobController@store' )->name('cronJob.store'
 Route::put ('cron-job/update', 'CronJobController@update')->name('cronJob.update');
 
 Route::delete('cron-job/{id}/destroy', 'CronJobController@delete')->name('cronJob.destroy');
+
+# O limit está fixo. Deixar dinâmico!
+Route::get('mania/jogos', 'ManiaSorteioController@index')->name('mania.jogos');
+Route::delete('mania/jogos/{id}/destroy', 'ManiaSorteioController@delete')->name('mania.destroy');
