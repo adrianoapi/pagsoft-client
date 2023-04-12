@@ -35,7 +35,12 @@ foreach($expensive as $value):
 
 <div class="card ">
     <div class="card-header ">
-        <h4 class="card-title">Fluxo Anual</h4>
+      <select id="financeRange" onchange="selectFinance(this)">
+        <option value="annual" {{$option == "annual" ? 'selected' : NULL}}>annual</option>
+        <option value="monthly" {{$option == "monthly" ? 'selected' : NULL}}>monthly</option>
+        <option value="today" {{$option == "today" ? 'selected' : NULL}}>today</option>
+      </select>
+      <h4 class="card-title">Fluxo Anual</h4>
     </div>
     <div class="card-body ">
     <canvas id="myChart3"></canvas>
@@ -47,11 +52,11 @@ foreach($expensive as $value):
 </div>
 
 <script>
-  const labelsFinance = [
+  var labelsFinance = [
     <?php echo $mes;?>
   ];
 
-  const data31 = {
+  var data31 = {
     labels: labelsFinance,
     datasets: [{
       label: 'Receita',
@@ -67,7 +72,7 @@ foreach($expensive as $value):
     }]
   };
 
-  const config3 = {
+  var config3 = {
     type: 'line',
     data: data31,
     options: {}
@@ -75,7 +80,7 @@ foreach($expensive as $value):
 </script>
 
 <script>
-  const myChart3 = new Chart(
+  var myChart3 = new Chart(
     document.getElementById('myChart3'),
     config3
   );

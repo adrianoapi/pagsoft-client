@@ -64,22 +64,28 @@ function showCart()
 
                 $("#ajax-cart").html(data['cart']);
 
-               showFinanceByYear();
+               showFinanceByYear("annual");
             }
     });
 }
 
-function showFinanceByYear()
+function selectFinance(e)
+{
+    $("#finance-year").html('');
+    showFinanceByYear(e.value);
+}
+
+function showFinanceByYear(value)
 {
     $.ajax({
         url: "{{route('dashboard.finance.year')}}",
         type: "GET",
         data: {
-            "_token": "{{csrf_token()}}"
+            "_token": "{{csrf_token()}}",
+            "range": value
         },
         dataType: 'json',
             success: function(data){
-                console.log(data);
                 $("#finance-year").html(data['byYear']);
             }
     });
