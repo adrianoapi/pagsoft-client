@@ -35,12 +35,13 @@ foreach($expensive as $value):
 
 <div class="card ">
     <div class="card-header ">
-      <select id="financeRange" onchange="selectFinance(this)">
-        <option value="annual" {{$option == "annual" ? 'selected' : NULL}}>annual</option>
-        <option value="monthly" {{$option == "monthly" ? 'selected' : NULL}}>monthly</option>
-        <option value="today" {{$option == "today" ? 'selected' : NULL}}>today</option>
-      </select>
-      <h4 class="card-title">Fluxo Anual</h4>
+      <h4 class="card-title">Fluxo Financeiro
+        <select id="financeRange" onchange="selectFinance(this)">
+          <option value="annual" {{$option == "annual" ? 'selected' : NULL}}>Anual</option>
+          <option value="monthly" {{$option == "monthly" ? 'selected' : NULL}}>Mensal</option>
+          <option value="today" {{$option == "today" ? 'selected' : NULL}}>Diário</option>
+        </select>
+      </h4>
     </div>
     <div class="card-body ">
     <canvas id="myChart3"></canvas>
