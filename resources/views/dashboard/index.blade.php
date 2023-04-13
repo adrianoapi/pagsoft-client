@@ -64,7 +64,7 @@ function showCart()
 
                 $("#ajax-cart").html(data['cart']);
 
-               showFinanceByYear("annual");
+               showFinanceByYear("monthly");
             }
     });
 }

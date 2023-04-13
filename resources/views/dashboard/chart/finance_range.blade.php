@@ -1,36 +1,27 @@
 <?php
-
 $mes   = NULL;
 $valor = NULL;
 $mesD   = NULL;
 $valorD = NULL;
 $i=0;
 
-$recipe = array_reverse($data->recipe);
-foreach($recipe as $value):
+$j = 0;
+foreach($data as $value):
+  $j++;
+endforeach;
 
-  $virgula = $i > 0 ? "," : NULL;
+foreach($data as $key => $value):
 
-  $mes   .= "{$virgula}'{$value->dt_lancamento}'";
-  $valor .= $virgula.$value->total;
+  $virgula = $i < $j ? "," : NULL;
 
-  $i++;
-
- endforeach;
- 
-//Despesas
-$i=0;
-$expensive = array_reverse($data->expensive);
-foreach($expensive as $value):
-
-  $virgula = $i > 0 ? "," : NULL;
-
-  $valorD .= $virgula.($value->total);
+  $mes    = "'{$key}'{$virgula}".$mes;
+  $valor  = $value->lucro.$virgula.$valor;
+  $valorD = $value->despesa.$virgula.$valorD;
 
   $i++;
 
- endforeach;
- ?>
+endforeach;
+?>
 
 
 <div class="card ">
