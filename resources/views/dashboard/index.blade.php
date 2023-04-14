@@ -19,6 +19,9 @@
             <div class="col-md-5" id="finance-year">
                 Loadding...
             </div>
+            <div class="col-md-5" id="finance-group">
+                Loadding...
+            </div>
         </div>
     </div>
 </div>
@@ -65,6 +68,7 @@ function showCart()
                 $("#ajax-cart").html(data['cart']);
 
                showFinanceByYear("monthly");
+               showFinanceGroup("monthly");
             }
     });
 }
@@ -73,6 +77,12 @@ function selectFinance(e)
 {
     $("#finance-year").html('');
     showFinanceByYear(e.value);
+}
+
+function selectFinanceGroup(e)
+{
+    $("#finance-group").html('');
+    showFinanceGroup(e.value);
 }
 
 function showFinanceByYear(value)
@@ -87,6 +97,22 @@ function showFinanceByYear(value)
         dataType: 'json',
             success: function(data){
                 $("#finance-year").html(data['byYear']);
+            }
+    });
+}
+
+function showFinanceGroup(value)
+{
+    $.ajax({
+        url: "{{route('dashboard.finance.group')}}",
+        type: "GET",
+        data: {
+            "_token": "{{csrf_token()}}",
+            "range": value
+        },
+        dataType: 'json',
+            success: function(data){
+                $("#finance-group").html(data['byGroup']);
             }
     });
 }

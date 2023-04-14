@@ -48,6 +48,7 @@ Route::get('dashboard',             'DashbaordController@index'  )->name('dashbo
 Route::get('dashboard/finance',     'DashbaordController@finance')->name('dashboard.finance');
 Route::get('dashboard/cart',        'DashbaordController@cart'   )->name('dashboard.cart');
 Route::get('dashboard/fiance/year', 'DashbaordController@byYear' )->name('dashboard.finance.year');
+Route::get('dashboard/fiance/group', 'DashbaordController@byGroup' )->name('dashboard.finance.group');
 
 # Diagram
 Route::get ('diagram',        'DiagramController@index' )->name('diagram.index');

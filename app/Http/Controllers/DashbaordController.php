@@ -33,6 +33,19 @@ class DashbaordController extends Controller
         ]);
     }
 
+    public function byGroup()
+    {
+        $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/dashbaord/finance/group/'.$_GET['range']);
+        $data = json_decode($response->getBody());
+
+        return response()->json([
+            'byGroup' => view('dashboard.chart.finance_group', [
+                'data' => $data,
+                'option' => $_GET['range']
+            ])->render(),
+        ]);
+    }
+
     public function byYear()
     {
         $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/dashbaord/finance/range/'.$_GET['range']);
