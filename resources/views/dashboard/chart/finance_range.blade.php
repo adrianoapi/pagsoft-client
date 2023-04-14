@@ -32,6 +32,11 @@ endforeach;
           <option value="monthly" {{$option == "monthly" ? 'selected' : NULL}}>Mensal</option>
           <option value="today" {{$option == "today" ? 'selected' : NULL}}>Diário</option>
         </select>
+        <small>
+          {{$option == "today" ? '30 dias' : NULL}}
+          {{$option == "monthly" ? '1 ano' : NULL}}
+          {{$option == "annual" ? '10 anos' : NULL}}
+        </small>
       </h4>
     </div>
     <div class="card-body ">

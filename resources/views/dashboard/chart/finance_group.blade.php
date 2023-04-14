@@ -17,12 +17,17 @@ endforeach;
 ?>
 <div class="card ">
     <div class="card-header ">
-      <h4 class="card-title">Fluxo Financeiro
+      <h4 class="card-title">Grupo de Despesas
         <select onchange="selectFinanceGroup(this)">
           <option value="annual" {{$option == "annual" ? 'selected' : NULL}}>Anual</option>
           <option value="monthly" {{$option == "monthly" ? 'selected' : NULL}}>Mensal</option>
           <option value="today" {{$option == "today" ? 'selected' : NULL}}>Diário</option>
         </select>
+        <small>
+          {{$option == "today" ? '30 dias' : NULL}}
+          {{$option == "monthly" ? '1 ano' : NULL}}
+          {{$option == "annual" ? '10 anos' : NULL}}
+        </small>
       </h4>
     </div>
     <div class="card-body ">
