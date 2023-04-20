@@ -40,11 +40,9 @@ class EventController extends UtilController
        
             $filter = !empty($request->filter) ? $request->filter : null;
             $page = !empty($request->page) ? $request->page : 1;
-            $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/event',[
+            $response = Http::withToken(session()->get('access_token'))->get(getenv('API_URL').'api/event/'.$request->start.'/'.$request->end,[
                 'page'  => $page,
-                'title' => $filter,
-                'start' => $request->start,
-                'end'   => $request->end,
+                'title' => $filter
             ]);
     
             $data = json_decode($response->getBody());
