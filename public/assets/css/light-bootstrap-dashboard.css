@@ -5310,4 +5310,8 @@ License - nucleoapp.com/license/
     content: "\ea64";
 }
 
+.nc-gun::before {
+    content: "\ea65";
+}
+
 /* all icon font classes list here */

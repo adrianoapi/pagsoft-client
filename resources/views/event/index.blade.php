@@ -32,7 +32,7 @@
                     <div class="card-header ">
                     </div>
                     <div class="card-body table-full-width table-responsive">
-
+                    <i class="nc-icon nc-gun"></i>
                         <div id='calendar'></div>  
 
                     </div>
