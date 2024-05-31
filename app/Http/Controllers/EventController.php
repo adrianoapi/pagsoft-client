@@ -55,6 +55,7 @@ class EventController extends UtilController
 
     public function store(Request $request)
     {
+        #update add icon
         $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/event', [
             'title'    => $request->title,
             'icon'     => $request->icon,
