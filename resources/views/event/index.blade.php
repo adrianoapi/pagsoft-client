@@ -32,9 +32,7 @@
                     <div class="card-header ">
                     </div>
                     <div class="card-body table-full-width table-responsive">
-                    <i class="nc-icon nc-gun"></i>
                         <div id='calendar'></div>  
-
                     </div>
                 </div>
             </div>
@@ -77,6 +75,12 @@
                     <td>Location</td>
                     <td>
                         {{Form::textarea('location', NULL, ['class' => 'form-control', 'id' => 'location', 'placeholder' => 'location...'])}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Icon</td>
+                    <td>
+                        {{Form::text('icon', NULL, ['class' => 'form-control', 'id' => 'icon', 'placeholder' => 'icon'])}}
                     </td>
                 </tr>
                 <tr style="display: none;">
@@ -139,6 +143,7 @@ $('#comment').on('submit', function(e) {
         url: "{{route('event.update')}}",
         data: {
             title: $('#title').val(),
+            icon: $('#icon').val(),
             backgroundColor: $('#backgroundColor').val(),
             editable: $('#editable').val(),
             location: $('#location').val(),
@@ -177,6 +182,12 @@ $(document).ready(function () {
                         displayEventTime: false,
                         editable: true,
                         eventRender: function (event, element, view) {
+
+                            if(event.icon != '')
+                            {
+                                element.find('.fc-title').prepend('<i class="nc-icon '+event.icon+'"></i> ');
+                            }
+
                             if (event.allDay === 'true') {
                                     event.allDay = true;
                             } else {
@@ -274,6 +285,7 @@ $(document).ready(function () {
                                         success: function (response) {
                                             var data = JSON.parse(response);
                                             $("#title").val(data.title);
+                                            $("#icon").val(data.icon);
                                             $("#backgroundColor").val(data.backgroundColor);
                                             $("#editable").val(data.editable);
                                             $("#location").val(data.location);

@@ -57,6 +57,7 @@ class EventController extends UtilController
     {
         $response = Http::withToken(session()->get('access_token'))->post(getenv('API_URL').'api/event', [
             'title'    => $request->title,
+            'icon'     => $request->icon,
             'start'    => $request->start,
             'end'      => $request->end,
             'location' => $request->location,
@@ -78,6 +79,7 @@ class EventController extends UtilController
     {
         $response = Http::withToken(session()->get('access_token'))->put(getenv('API_URL').'api/event/'.$request->id, [
             'title'    => $request->title,
+            'icon'     => $request->icon,
             'start'    => $request->start,
             'end'      => $request->end,
             'location' => $request->location,
