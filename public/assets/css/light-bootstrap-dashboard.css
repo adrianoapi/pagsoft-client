@@ -5314,4 +5314,47 @@ License - nucleoapp.com/license/
     content: "\ea65";
 }
 
+.nc-student-cap::before {
+    content: "\ea66";
+}
+
+.nc-weight::before {
+    content: "\ea67";
+}
+
+.nc-fight::before {
+    content: "\ea68";
+}
+
+.nc-police-officer::before {
+    content: "\ea69";
+}
+
+.nc-running-man::before {
+    content: "\ea70";
+}
+
+.nc-cake::before {
+    content: "\ea71";
+}
+
+.nc-football-shoe::before {
+    content: "\ea72";
+}
+
+.nc-bicycle::before {
+    content: "\ea73";
+}
+
+.nc-cart::before {
+    content: "\ea74";
+}
+
+.nc-codebar::before {
+    content: "\ea75";
+}
+
+.nc-heart::before {
+    content: "\ea76";
+}
 /* all icon font classes list here */
