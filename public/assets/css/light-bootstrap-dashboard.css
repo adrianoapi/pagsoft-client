@@ -5357,4 +5357,40 @@ License - nucleoapp.com/license/
 .nc-heart::before {
     content: "\ea76";
 }
+
+.nc-cube::before {
+    content: "\ea77";
+}
+
+.nc-race-car::before {
+    content: "\ea78";
+}
+
+.nc-tank::before {
+    content: "\ea79";
+}
+
+.nc-magazine-folder::before {
+    content: "\ea80";
+}
+
+.nc-book::before {
+    content: "\ea81";
+}
+
+.nc-news::before {
+    content: "\ea82";
+}
+
+.nc-cleaning-spray::before {
+    content: "\ea83";
+}
+
+.nc-car::before {
+    content: "\ea84";
+}
+
+.nc-scissors::before {
+    content: "\ea85";
+}
 /* all icon font classes list here */
